@@ -13,14 +13,14 @@ namespace DungeonKIT
 
             if (collider.gameObject.tag == "Player") //if contact with player
             {
-                Damage(PlayerStats.Instance); //Player damaged
+                Damage(PlayerStats.Instance,10f); //Player damaged
             }
         }
 
         //Damage method
-        void Damage(PlayerStats player)
+        void Damage(PlayerStats player, float attackDamage)
         {
-            player.TakingDamage(); //Player hp - 1 
+            player.TakingDamage(attackDamage); //Player hp - 1 
             Destroying(); //Destroyng gameobject
         }
 

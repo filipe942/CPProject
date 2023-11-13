@@ -20,8 +20,8 @@ namespace DungeonKIT
         {
             animator = GetComponentInChildren<Animator>();
             aiController = GetComponent<AIController>();
-            aiStats = GetComponent<AIStats>();
-
+            aiStats = GetComponent<AIStats>(); 
+            aiStats.enemyHP= new DoubleFloat(1500f, 1500f); //HP do orc boss é definido aqui
             aiStats.onDeath += Death; //Adds to the event variable in the parent class
         }
 
@@ -30,16 +30,16 @@ namespace DungeonKIT
         {
             if (collision.gameObject.tag == "Player") //If its is player
             {
-                MeleeAttack(collision.gameObject); //Melee attack
+                MeleeAttack(collision.gameObject, 20f); //Melee attack
             }
         }
 
-        public override void MeleeAttack(GameObject target) //set up attack
+        public override void MeleeAttack(GameObject target, float attackDamage) //set up attack
         {
             //Set up here
 
             //
-            base.MeleeAttack(target); //Parent method starts
+            base.MeleeAttack(target,attackDamage); //Parent method starts
         }
 
         private void Update()
@@ -64,7 +64,9 @@ namespace DungeonKIT
             if (timeBtwShots <= 0)
             {
                 Attack(); //Jump attack
-                timeBtwShots = startTimeBtnShots; //Set time to start again
+
+                //A velocidade dos ataques do orc boss são definidas aqui.
+                timeBtwShots = 1-(startTimeBtnShots*0.5f); //Set time to start again
             }
             else
             {

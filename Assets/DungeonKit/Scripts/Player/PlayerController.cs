@@ -21,6 +21,7 @@ namespace DungeonKIT
 
         private void Start()
         {
+            moveSpeed=PlayerStats.Instance.Agility;
             playerStats = PlayerStats.Instance;
             rigidbody2d = GetComponent<Rigidbody2D>();
             playerAnimator = GetComponentInChildren<Animator>();

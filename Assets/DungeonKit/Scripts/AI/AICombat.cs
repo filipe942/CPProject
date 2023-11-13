@@ -25,11 +25,11 @@ namespace DungeonKIT
             rangeShot.transform.up = dir;
         }
         //Virtual method for Melee Attack, reconfigured in child classes
-        public virtual void MeleeAttack(GameObject target)
+        public virtual void MeleeAttack(GameObject target, float attackDamage)
         {
             PlayerStats playerStats = PlayerStats.Instance;
 
-            playerStats.TakingDamage();
+            playerStats.TakingDamage(attackDamage);
 
         }
     }

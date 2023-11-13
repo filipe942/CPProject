@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace DungeonKIT
         {
             PlayerStats playerStats = PlayerStats.Instance;
 
-            playerStats.HP = new DoubleInt(5,5);
+            playerStats.HP = new DoubleFloat(5f,5f);
             UIManager.Instance.UpdateUI();
         }
 

@@ -19,7 +19,7 @@ namespace DungeonKIT
         [HideInInspector] public DamageEffect damageEffect; //Visual damage effect
 
         [Header("Settings")]
-        public DoubleFloat HP = new DoubleFloat(100, 100); //DoubleFloat(currentHP,maxHP)
+        public DoubleFloat enemyHP = new DoubleFloat(100, 100); //DoubleFloat(currentHP,maxHP)
 
         private void Start()
         {
@@ -34,14 +34,14 @@ namespace DungeonKIT
         {
             aiController.isAttacked = true; //sends AI that he was attacked
 
-            HP.current -= damage; //damage
+            enemyHP.current -= damage; //damage
             aICanvas.UpdateUI(); //Update AI ui (hp bar)
 
             AudioManager.Instance.Play(audioSource, AudioManager.Instance.aiDamage, false); //play damage sound
 
             StartCoroutine(damageEffect.Damage(aiSprite)); //Start damage effect
 
-            if (HP.current <= 0) //if HP < 0 Death
+            if (enemyHP.current <= 0) //if HP < 0 Death
             {
                 Death();
             }

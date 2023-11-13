@@ -19,14 +19,14 @@ namespace DungeonKIT
         //Buy method
         public void Buy(int itemID)
         {
-            if (playerStats.money >= shopItems[itemID].price) //If player money > item price
+            if (playerStats.Money >= shopItems[itemID].price) //If player money > item price
             {
-                playerStats.money -= shopItems[itemID].price; //Player money - price
+                playerStats.Money -= shopItems[itemID].price; //Player money - price
 
                 switch (shopItems[itemID].itemType) //Check item type
                 {
                     case ShopItem.ItemType.bottle: //Bottles type 
-                        playerStats.bottles++; //Bottles + 1
+                        playerStats.Bottles++; //Bottles + 1
                         break;
                 }
             }

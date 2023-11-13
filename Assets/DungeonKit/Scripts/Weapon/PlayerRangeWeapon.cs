@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +21,7 @@ namespace DungeonKIT
         //Damage method
         void Damage(AIStats enemy)
         {
-            enemy.TakingDamage(damageRange.RandomFloat()); //Random damage between damageRange.min and max
+            enemy.TakingDamage(damageRange.RandomFloat()+PlayerStats.Instance.Damage); //Random damage between damageRange.min and max
             Destroying(); 
         }
     }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +19,8 @@ namespace DungeonKIT
 
         private void Start()
         {
+            aiStats = GetComponent<AIStats>();
+            aiStats.enemyHP= new DoubleFloat(50f, 50f); //HP do mago é definido aqui
             player = GameObject.FindGameObjectWithTag("Player");
             aiController = GetComponent<AIController>();
         }
@@ -50,7 +52,9 @@ namespace DungeonKIT
             if (timeBtwShots <= 0)
             {
                 RangeAttack(rangeWeapon, player.transform); //Spawn weapon
-                timeBtwShots = startTimeBtnShots;//Set time to start again
+                
+                //A velocidade dos ataques do mago é definido aqui.
+                timeBtwShots = 1-(startTimeBtnShots*0f);//Set time to start again. 
             }
             else
             {

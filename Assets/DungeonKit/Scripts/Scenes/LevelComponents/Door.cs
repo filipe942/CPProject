@@ -33,9 +33,9 @@ namespace DungeonKIT
                 {
                     InputManager.Interaction = false; //unpress button
 
-                    if (PlayerStats.Instance.doorKeys.ContainsKey(needKeyID)) //null check
+                    if (PlayerStats.Instance.DoorKeys.ContainsKey(needKeyID)) //null check
                     {
-                        if (PlayerStats.Instance.doorKeys[needKeyID] == true) //Key ownership check
+                        if (PlayerStats.Instance.DoorKeys[needKeyID] == true) //Key ownership check
                         {
                             OpenDoor();
                         }
@@ -47,7 +47,7 @@ namespace DungeonKIT
         void OpenDoor()
         {
             isLocked = false; //Unlock door
-            PlayerStats.Instance.doorKeys.Remove(needKeyID); //remove key from player
+            PlayerStats.Instance.DoorKeys.Remove(needKeyID); //remove key from player
 
             AudioManager.Instance.Play(PlayerStats.Instance.audioSource, AudioManager.Instance.openDoor, false); //play opendoor sound
 

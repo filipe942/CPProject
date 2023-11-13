@@ -21,7 +21,7 @@ namespace DungeonKIT
         //Method for updating the UI
         public void UpdateUI()
         {
-            hpBar.fillAmount = aIStats.HP.current / aIStats.HP.max;
+            hpBar.fillAmount = aIStats.enemyHP.current / aIStats.enemyHP.max;
         }
 
     }

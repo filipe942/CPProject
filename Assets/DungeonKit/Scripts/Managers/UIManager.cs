@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,18 +9,18 @@ namespace DungeonKIT
     public class UIManager : MonoBehaviour
     {
         public static UIManager Instance; //Singleton
+        public Image healthBar;
+        public float healthAmount;
 
         //Ceched components
         PlayerStats playerStats;
         DialogManager dialogManager;
 
         [Header("Components")]
-        List<GameObject> HPUIObjects = new List<GameObject>(); //UI HP list
-        public Transform hpParent; //HP parent, position for spawn
-        public GameObject hpIconPrefab; //HP prefab for spawn
-        public Sprite hpActiveSprite, hpDisableSprite; //Sprites for HP( 1 hpActive - you have 1 hp, 1 hpDisabled - you have taken damage  )
 
+        public GameObject HP_Manager; //HP prefab for spawn
         public Text moneyText, bottleText, keyText; //UI text
+        
 
         [Header("Screens GameObjects")]
         public GameObject dialogGO, shopGO;
@@ -62,6 +62,7 @@ namespace DungeonKIT
             dialogClosed += CloseShopMenu; //Add event
 
             playerStats = PlayerStats.Instance; //Set playerstats in static object of PlayerStats
+            healthAmount= playerStats.HP.max;
             UpdateUI(); //UpdateUI
 
         }
@@ -69,37 +70,16 @@ namespace DungeonKIT
         //Update ui method
         public void UpdateUI()
         {
-            UpdateHP(); //Update HP 
-            moneyText.text = playerStats.money.ToString(); //Update ui money text
-            bottleText.text = playerStats.bottles.ToString(); //Update ui bottle text
-            keyText.text = playerStats.doorKeys.Count.ToString();
+            UpdateHP();
+            moneyText.text = playerStats.Money.ToString(); //Update ui money text
+            keyText.text = playerStats.DoorKeys.Count.ToString();
         }
 
         //Update hp method
+    
         public void UpdateHP()
         {
-            //Loop for clear old hp
-            for (int i = 0; i < HPUIObjects.Count; i++)
-            {
-                Destroy(HPUIObjects[i]);
-            }
-            HPUIObjects.Clear(); //Clear list
-
-            //Loop for spawn new 
-            for (int i = 0; i < playerStats.HP.max; i++)
-            {
-                Image hpIcon = Instantiate(hpIconPrefab, hpParent).GetComponent<Image>(); //Spawn prefab
-
-                if (playerStats.HP.current > i) //check player hp
-                {
-                    hpIcon.sprite = hpActiveSprite; //Set Active hp
-                }
-                else
-                {
-                    hpIcon.sprite = hpDisableSprite; //Set disable hp
-                }
-                HPUIObjects.Add(hpIcon.gameObject); //Add object to list 
-            }
+            healthBar.fillAmount = playerStats.HP.current / playerStats.HP.max;
         }
 
         //Show dialog menu method
