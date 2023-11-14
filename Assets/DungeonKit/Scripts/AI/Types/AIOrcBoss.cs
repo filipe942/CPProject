@@ -12,7 +12,6 @@ namespace DungeonKIT
 
         [Header("Parametrs")]
         float timeBtwShots; //time between shots
-        public float startTimeBtnShots; // Start time between shots
         public float jumpSpeed; // AI Jump Speed
         public float jumpPower; // Range and strength of the jump
 
@@ -22,6 +21,7 @@ namespace DungeonKIT
             aiController = GetComponent<AIController>();
             aiStats = GetComponent<AIStats>(); 
             aiStats.enemyHP= new DoubleFloat(1500f, 1500f); //HP do orc boss é definido aqui
+            aiStats.attackDamage= 20f;
             aiStats.onDeath += Death; //Adds to the event variable in the parent class
         }
 
@@ -30,7 +30,7 @@ namespace DungeonKIT
         {
             if (collision.gameObject.tag == "Player") //If its is player
             {
-                MeleeAttack(collision.gameObject, 20f); //Melee attack
+                MeleeAttack(collision.gameObject, aiStats.attackDamage); //Melee attack
             }
         }
 
@@ -66,7 +66,7 @@ namespace DungeonKIT
                 Attack(); //Jump attack
 
                 //A velocidade dos ataques do orc boss são definidas aqui.
-                timeBtwShots = 1-(startTimeBtnShots*0.5f); //Set time to start again
+                timeBtwShots = 1-(aiStats.attackSpeed*0.5f); //Set time to start again
             }
             else
             {

@@ -75,7 +75,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 100
   m_Time: 0.14
-  m_PreviewTimeScale: 1
+  m_PreviewTimeScale: 0
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -105,7 +105,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 0.3529412}
+      key0: {r: 0.025752544, g: 0, b: 1, a: 0.3529412}
       key1: {r: 0.79607844, g: 0.47058824, b: 0.2627451, a: 0.52156866}
       key2: {r: 0.06666667, g: 0.011764706, b: 0, a: 0.039215688}
       key3: {r: 0.06666667, g: 0.011764706, b: 0, a: 0}
@@ -130,7 +130,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 3
       m_NumAlphaKeys: 4
     numCornerVertices: 0
@@ -155,8 +155,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4499533761937706}
   - component: {fileID: 212989990525637680}
+  - component: {fileID: 1720556518462206275}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: Sprite_DarkMageAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,8 +172,8 @@ Transform:
   m_GameObject: {fileID: 1709194431073268}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071064, w: 0.70710725}
-  m_LocalPosition: {x: 0.0073, y: -0, z: 0}
-  m_LocalScale: {x: 0.16598676, y: 0.16598676, z: 0.16598676}
+  m_LocalPosition: {x: 0.02995, y: -0.00319, z: 0}
+  m_LocalScale: {x: 0.4549884, y: 0.4549884, z: 0.4549884}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4983800028573350}
@@ -218,9 +219,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 57010937e71cdc54c97fc7b9b034b9ab, type: 3}
+  m_Sprite: {fileID: -2070287492, guid: 35ff0f05c6bb020409565eef2a353c57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -229,6 +230,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1720556518462206275
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709194431073268}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0c484ebe5ef2f0a4d830dc8853ed200d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1957211797481704
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,9 +263,9 @@ GameObject:
   - component: {fileID: 61734816681368476}
   - component: {fileID: 50480833061167942}
   - component: {fileID: 3074956800750437209}
-  - component: {fileID: 5704233475423164677}
+  - component: {fileID: 8228065516297283754}
   m_Layer: 0
-  m_Name: Fireball
+  m_Name: DarkMageAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,9 +370,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bf33409fd855b0447a28c0b42fa3f234, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 77283131335b6774f82d74d9e7279bf8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.502
+  m_Volume: 0.336
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -434,7 +456,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5704233475423164677
+--- !u!114 &8228065516297283754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -443,7 +465,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1957211797481704}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e40ed596dd76ac4b9e267876faf665c, type: 3}
+  m_Script: {fileID: 11500000, guid: 05fdbce707d5b7241af91fe3d5a6763d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace DungeonKIT
 {
-    public class AIMage : AICombat
+    public class AIDarkMage : AICombat
     {
         AIController aiController;
 
@@ -19,7 +19,7 @@ namespace DungeonKIT
         private void Start()
         {
             aiStats = GetComponent<AIStats>();
-            aiStats.enemyHP= new DoubleFloat(50f, 50f); //HP do mago é definido aqui
+            aiStats.enemyHP= new DoubleFloat(80f, 80f); //HP do mago é definido aqui
             player = GameObject.FindGameObjectWithTag("Player");
             aiController = GetComponent<AIController>();
         }

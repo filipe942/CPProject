@@ -1,11 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace DungeonKIT
 {
-    public class AIRangeWeapon : RangeWeapon
+    public class AIMageRangedWeapon : RangeWeapon
     {
+
 
         public override void OnTriggerEnter2D(Collider2D collider)
         {
@@ -13,7 +14,7 @@ namespace DungeonKIT
 
             if (collider.gameObject.tag == "Player") //if contact with player
             {
-                Damage(PlayerStats.Instance,10f); //Player damaged
+                Damage(PlayerStats.Instance, 10f + (10f * PlayerStats.Instance.Armor )); //Player damaged
             }
         }
 

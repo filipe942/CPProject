@@ -1,10 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace DungeonKIT
 {
-    public class AIOrc : AICombat
+    public class AiStrongerOrc : AICombat
     {
         GameObject player;
 
@@ -14,8 +14,8 @@ namespace DungeonKIT
         private void Start()
         {
             aiStats = GetComponent<AIStats>();
-            aiStats.enemyHP = new DoubleFloat(100f, 100f); // HP do orc é definido aqui
-            aiStats.attackDamage=5f;
+            aiStats.enemyHP = new DoubleFloat(150f, 150f); // HP do orc é definido aqui
+            aiStats.attackDamage=15f;
             timeBtwAttacks = startTimeBtnAttacks; // Initialize the time between attacks
         }
 
