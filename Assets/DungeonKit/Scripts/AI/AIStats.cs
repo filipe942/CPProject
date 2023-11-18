@@ -21,6 +21,9 @@ namespace DungeonKIT
         [Header("Settings")]
         public DoubleFloat enemyHP = new DoubleFloat(100, 100); //DoubleFloat(currentHP,maxHP)
 
+        public float attackDamage;
+        public float attackSpeed;
+
         private void Start()
         {
             aiSprite = GetComponentInChildren<SpriteRenderer>();

@@ -15,8 +15,7 @@ namespace DungeonKIT
 
         [Header("Parametrs")]
         float timeBtwShots; //time between shots
-        public float startTimeBtnShots; // Start time between shots
-
+        
         private void Start()
         {
             aiStats = GetComponent<AIStats>();
@@ -54,7 +53,7 @@ namespace DungeonKIT
                 RangeAttack(rangeWeapon, player.transform); //Spawn weapon
                 
                 //A velocidade dos ataques do mago é definido aqui.
-                timeBtwShots = 1-(startTimeBtnShots*0f);//Set time to start again. 
+                timeBtwShots = 1-(aiStats.attackSpeed*0f);//Set time to start again. 
             }
             else
             {

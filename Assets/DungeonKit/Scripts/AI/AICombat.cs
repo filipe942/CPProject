@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,6 +31,10 @@ namespace DungeonKIT
 
             playerStats.TakingDamage(attackDamage);
 
+        }
+        protected virtual float CalculateDamage()
+        {
+            return 10f; // Default damage value
         }
     }
 }
