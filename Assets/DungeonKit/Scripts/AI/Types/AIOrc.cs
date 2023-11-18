@@ -15,6 +15,7 @@ namespace DungeonKIT
         {
             aiStats = GetComponent<AIStats>();
             aiStats.enemyHP = new DoubleFloat(100f, 100f); // HP do orc é definido aqui
+            aiStats.attackDamage=5f;
             timeBtwAttacks = startTimeBtnAttacks; // Initialize the time between attacks
         }
 
@@ -32,10 +33,10 @@ namespace DungeonKIT
         {
             if (timeBtwAttacks <= 0)
             {
-                MeleeAttack(player, 5f); // Call your MeleeAttack method with appropriate parameters
+                MeleeAttack(player, aiStats.attackDamage); // Call your MeleeAttack method with appropriate parameters
 
                 // Velocidade dos ataques do orc é definido aqui
-                timeBtwAttacks = 1-(startTimeBtnAttacks*0.99f); // Set time to start again
+                timeBtwAttacks = 1-(aiStats.attackSpeed*0.99f); // Set time to start again
             }
             else
             {
