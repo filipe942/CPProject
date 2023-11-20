@@ -78,6 +78,7 @@ namespace DungeonKIT
         //if boss die level complete
         void Death()
         {
+            Debug.Log("Level complete!");
             GameManager.Instance.LevelComplete();
         }
 

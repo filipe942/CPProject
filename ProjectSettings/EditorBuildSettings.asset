@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/DungeonKit/Scenes/Levels/Lvl_1.unity
     guid: 02a920e0e42f03e4dbcd80bba79bb229
+  - enabled: 1
+    path: Assets/DungeonKit/Scenes/Levels/Lvl_2.unity
+    guid: cef67671340944043bdfcd8409131b92
+  - enabled: 1
+    path: Assets/DungeonKit/Scenes/Levels/Lvl_3.unity
+    guid: 974b83ff6ba49674c8b4f242ed590e68
   m_configObjects: {}

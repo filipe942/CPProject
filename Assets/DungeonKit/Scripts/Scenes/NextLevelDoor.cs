@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -56,13 +58,29 @@ namespace DungeonKIT
                 collider2D.enabled = true; //trigger enabled
             }
         }
-        //Next level method
+        //Next level method para testes, o debaixo e o final
         void GoToNextLevel()
         {
-            int lvlID = ScenesManager.Instance.levelID + 1; //Level id + 1
+            int lvlID = ScenesManager.Instance.levelID+1; //Level id + 1
             ScenesManager.Instance.levelID++;
             ScenesManager.Instance.LoadLoadingScene("Lvl_" + lvlID); //Load next level
         }
+
+        /*
+        void GoToNextLevel()
+        {
+            int numberOfLevels = 4; // Number of available levels
+            int currentLevelID = ScenesManager.Instance.levelID;
+            int randomLevelID = currentLevelID;
+
+            while (randomLevelID == currentLevelID) // Ensure the new level is different from the current one
+            {
+                randomLevelID = (int)Random.Range(0, numberOfLevels);
+            }
+
+            ScenesManager.Instance.LoadLoadingScene("Lvl_" + randomLevelID);
+        }*/
+
 
 
     }

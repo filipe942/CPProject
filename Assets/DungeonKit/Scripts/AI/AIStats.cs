@@ -11,6 +11,7 @@ namespace DungeonKIT
         AICanvas aICanvas;
         SpriteRenderer aiSprite;
         AudioSource audioSource;
+        public EnemyManager enemyManager;
 
         //Event
         public delegate void DeathAction(); // AI Death Event
@@ -30,6 +31,11 @@ namespace DungeonKIT
             aICanvas = GetComponentInChildren<AICanvas>();
             aiController = GetComponent<AIController>();
             audioSource = GetComponent<AudioSource>();
+            enemyManager = FindObjectOfType<EnemyManager>();
+            if (enemyManager == null)
+            {
+                Debug.LogError("EnemyManager not found!");
+            }
         }
 
         //Сaused by taking damage
@@ -56,6 +62,7 @@ namespace DungeonKIT
                 onDeath(); // Death event
 
             Destroy(gameObject);
+            enemyManager.EnemyDestroyed();
         }
 
 
