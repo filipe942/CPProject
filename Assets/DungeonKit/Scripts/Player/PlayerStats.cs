@@ -10,6 +10,8 @@ namespace DungeonKIT
         public static PlayerStats Instance; //Singleton
         [HideInInspector] public AudioSource audioSource;
         [HideInInspector] public DamageEffect damageEffect; //Damage effect
+        
+        Player player;
 
         [Header("Variables")]
         [SerializeField] private DoubleFloat _HP = new DoubleFloat(3f, 3f);
@@ -64,17 +66,36 @@ namespace DungeonKIT
         private void Awake()
         {
             //Singleton
-            if (PlayerStats.Instance != null) Destroy(gameObject);
-            else Instance = this;
+            if (PlayerStats.Instance != null){Destroy(gameObject);}
+            else {Instance = this;}
 
-            HP = new DoubleFloat(200f, 200f);
+            HP = new DoubleFloat(100f, 100f);
+
+            /*
+            HP = new DoubleFloat(100f, 100f);
+
             Armor = 0f;
             Agility = 1 + (0.1f / 4);
             Damage = 0.1f;
+            */
+
+            // Get reference to the Player class
+            player = Player.Instance;
+
+            // Initialize from the Player class
+            InitializeFromPlayer(player);
 
             if (ScenesManager.Instance.continueGame)
                 SaveManager.Load();
         }
+
+        public void InitializeFromPlayer(Player player)
+            {
+                HP = player.HP;
+                Armor = player.Armor;
+                Agility = player.Agility;
+                Damage = player.Damage;
+            }
 
         //Taking damage method
         public void TakingDamage(float damageIntake)
