@@ -8,7 +8,7 @@ namespace DungeonKIT
 {
     public class NextLevelDoor : MonoBehaviour
     {
-        CircleCollider2D collider2D;
+        new CircleCollider2D collider2D;
 
         [Header("Components")]
         SpriteRenderer spriteRenderer;
@@ -47,15 +47,24 @@ namespace DungeonKIT
         //Check door status method
         public void CheckLockStatus()
         {
-            if (lockedDoor) //if door locked
+             if (PlayerStats.Instance != null && PlayerStats.Instance.audioSource != null)
             {
-                spriteRenderer.sprite = lockedSprite; //sprite locked door
-                collider2D.enabled = false; //trigger disabled
+                if (lockedDoor) // if door locked
+                {
+                    spriteRenderer.sprite = lockedSprite; // sprite locked door
+                    collider2D.enabled = false; // trigger disabled
+                }
+                else
+                {
+                    spriteRenderer.sprite = openedSprite; // sprite unloced door
+                    collider2D.enabled = true; // trigger enabled
+                }
             }
             else
             {
-                spriteRenderer.sprite = openedSprite; //sprite unloced door
-                collider2D.enabled = true; //trigger enabled
+                Debug.LogWarning("PlayerStats or AudioSource not assigned!");
+                // Handle the case where the PlayerStats or AudioSource is not assigned
+                // You might want to take alternative actions or log an error here
             }
         }
         //Next level method para testes, o debaixo e o final

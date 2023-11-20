@@ -19,13 +19,14 @@ namespace DungeonKIT
         [Header("Components")]
 
         public GameObject HP_Manager; //HP prefab for spawn
-        public Text moneyText, bottleText, keyText; //UI text
+        public Text moneyText, keyText; //UI text
         
 
         [Header("Screens GameObjects")]
         public GameObject dialogGO, shopGO;
         public GameObject pauseGo;
         public GameObject gameoverGO;
+        public GameObject levelWonGO;
         public GameObject mobileUIGO;
         [Header("Status")]
         public bool isPause;
@@ -59,7 +60,6 @@ namespace DungeonKIT
 #endif
             dialogManager = GetComponent<DialogManager>();
 
-            dialogClosed += CloseShopMenu; //Add event
 
             playerStats = PlayerStats.Instance; //Set playerstats in static object of PlayerStats
             healthAmount= playerStats.HP.max;
@@ -89,26 +89,7 @@ namespace DungeonKIT
 
             dialogGO.SetActive(true); //Show dialog screen gameobject
             dialogManager.SetDialogConfig(dialogConfig); //set config to dialog
-        }
-        //Show shop menu method
-        public void ShowShopMenu()
-        {
-            shopGO.SetActive(true); //Show shop screen
-        }
-        //Close dialog method
-        public void CloseDialogMenu()
-        {
-            isPause = false; //disable pause
-
-            dialogClosed(this, new EventArgs()); //Activate event
-
-            dialogGO.SetActive(false); //Disable dialog screen
-        }
-        //Close shop menu method
-        public void CloseShopMenu(object sender, EventArgs e)
-        {
-            shopGO.SetActive(false); //Disable shop screen
-        }
+        }        
         //Pause method
         public void Pause()
         {
@@ -121,6 +102,11 @@ namespace DungeonKIT
             gameoverGO.SetActive(true); //gameover screen enable
         }
 
+        public void LevelWon(){
+            levelWonGO.SetActive(true);
+            AudioManager.Instance.Play(PlayerStats.Instance.audioSource, AudioManager.Instance.openNextLvlDoor, false);
+        }
+
         //Load main menu method
         public void LoadMainMenu()
         {
@@ -130,10 +116,6 @@ namespace DungeonKIT
 
         //Check active platform
 #if UNITY_ANDROID || UNITY_IOS //mobile 
-        public void HealthBtn()
-        {
-            playerStats.Health(); //Player health hp
-        }
         public void InteractiveBtn()
         {
             InputManager.Interaction = true;

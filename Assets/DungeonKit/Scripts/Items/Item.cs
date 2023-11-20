@@ -23,9 +23,6 @@ namespace DungeonKIT
 
                 switch (type)
                 {
-                    case ItemType.Item:
-                        AudioManager.Instance.Play(PlayerStats.Instance.audioSource, AudioManager.Instance.pickUpItems, false); //play pickup item sound
-                        break;
                     case ItemType.Key:
                         AudioManager.Instance.Play(PlayerStats.Instance.audioSource, AudioManager.Instance.pickUpKey, false); //play pickup key sound
                         break;

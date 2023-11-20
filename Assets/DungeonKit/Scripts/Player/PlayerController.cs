@@ -114,11 +114,7 @@ namespace DungeonKIT
             //if pause disable and game
             if (!UIManager.Instance.isPause && GameManager.Instance.isGame)
             {
-                if (InputManager.Health) //If player press helath button
-                {
-                    InputManager.Health = false; //Unpress
-                    playerStats.Health(); //Player health hp
-                }
+                
             }
         }
     }

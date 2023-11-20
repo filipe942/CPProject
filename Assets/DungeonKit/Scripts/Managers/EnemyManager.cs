@@ -21,6 +21,7 @@ namespace DungeonKIT
 
             if (enemyCount == 0)
             {
+                UIManager.Instance.LevelWon(); 
                 Debug.Log("Level complete!");
                 GameManager.Instance.LevelComplete();
             }

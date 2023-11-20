@@ -14,13 +14,10 @@ namespace DungeonKIT
         [Header("AudioClips")] //List of sounds
         public AudioClip aiDamage;
         public AudioClip playerDamage;
-
         public AudioClip pickUpKey;
-        public AudioClip pickUpItems;
         public AudioClip pickUpCoin;
         public AudioClip openDoor;
-        public AudioClip drinkBottle;
-
+        public AudioClip openNextLvlDoor;
         public AudioClip music;
 
         //Singleton

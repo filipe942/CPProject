@@ -11,7 +11,7 @@ namespace DungeonKIT
         {
             base.OnTriggerEnter2D(collider);
 
-            if (collider.gameObject.tag == "Enemy") //if contact with enemy
+            if (collider.gameObject.tag == "Enemy" || collider.gameObject.tag=="Boss") //if contact with enemy
             {
                 AIStats enemy = collider.gameObject.GetComponent<AIStats>(); //get aistats component
                 Damage(enemy); //damage enemy

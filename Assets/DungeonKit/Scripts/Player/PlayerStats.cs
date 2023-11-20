@@ -47,13 +47,6 @@ namespace DungeonKIT
             set { _money = value; }
         }
 
-        [SerializeField] private int _bottles;
-        public int Bottles
-        {
-            get { return _bottles; }
-            set { _bottles = value; }
-        }
-
         [SerializeField] private Dictionary<int, bool> _doorKeys = new Dictionary<int, bool>();
         public Dictionary<int, bool> DoorKeys
         {
@@ -102,19 +95,6 @@ namespace DungeonKIT
                 {
                     Death(); //Lose 
                 }
-            }
-        }
-        //Health method
-        public void Health()
-        {
-            if (Bottles > 0)
-            {
-                Bottles--; //Bottles - 1
-                HP.current++; //HP + 1
-
-                AudioManager.Instance.Play(audioSource, AudioManager.Instance.drinkBottle, false); //play drink sound
-
-                UIManager.Instance.UpdateUI(); //Update UI
             }
         }
         //Death method
