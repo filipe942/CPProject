@@ -67,7 +67,7 @@ namespace DungeonKIT
             if (PlayerStats.Instance != null) Destroy(gameObject);
             else Instance = this;
 
-            HP = new DoubleFloat(500f, 500f);
+            HP = new DoubleFloat(100f, 100f);
             Armor = 0f;
             Agility = 1 + (0.1f / 4);
             Damage = 0.1f;
