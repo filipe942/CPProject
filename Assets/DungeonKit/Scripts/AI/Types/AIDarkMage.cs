@@ -12,9 +12,11 @@ namespace DungeonKIT
         GameObject player;
         [Header("Prefabs")]
         public GameObject rangeWeapon; //Prefab Throwing Weapons
+        public GameObject superRangedWeapon;
 
         [Header("Parametrs")]
         float timeBtwShots; //time between shots
+        int attackCounter = 0; // Counter for tracking number of attacks
         
         private void Start()
         {
@@ -39,10 +41,11 @@ namespace DungeonKIT
         //Method of attack
         public override void RangeAttack(GameObject rangeWeapon, Transform target)
         {
-            //Set up here
-
-            //
             base.RangeAttack(rangeWeapon, target);
+        }
+
+        public void SuperRangedAttack(GameObject superRangeWeapon, Transform target){
+            base.RangeAttack(superRangeWeapon, target);
         }
 
         //AttackByRate method
@@ -50,10 +53,19 @@ namespace DungeonKIT
         {
             if (timeBtwShots <= 0)
             {
-                RangeAttack(rangeWeapon, player.transform); //Spawn weapon
-                
-                //A velocidade dos ataques do mago é definido aqui.
-                timeBtwShots = 1-(aiStats.attackSpeed*0f);//Set time to start again. 
+                if (attackCounter == 9) // Check if it's the tenth attack
+                {
+                    SuperRangedAttack(superRangedWeapon, player.transform); // Trigger super attack
+                    attackCounter = 0; // Reset attack counter
+                }
+                else
+                {
+                    RangeAttack(rangeWeapon, player.transform); // Perform regular ranged attack
+                    attackCounter++; // Increment attack counter
+                }
+
+                // A velocidade dos ataques do mago é definido aqui.
+                timeBtwShots = 1 - (aiStats.attackSpeed * 0f); // Set time to start again. 
             }
             else
             {

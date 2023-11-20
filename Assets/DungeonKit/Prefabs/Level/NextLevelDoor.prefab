@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockedSprite: {fileID: 21300076, guid: 0f22d091cfbe7b344908dfc4cd78f6b6, type: 3}
   openedSprite: {fileID: 21300078, guid: 0f22d091cfbe7b344908dfc4cd78f6b6, type: 3}
-  lockedDoor: 0
+  lockedDoor: 1
 --- !u!50 &50753358637432804
 Rigidbody2D:
   serializedVersion: 4

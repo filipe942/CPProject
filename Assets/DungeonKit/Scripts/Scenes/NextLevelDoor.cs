@@ -82,6 +82,7 @@ namespace DungeonKIT
             int currentLevelID = ScenesManager.Instance.levelID;
             int randomLevelID = currentLevelID;
 
+
             while (randomLevelID == currentLevelID) // Ensure the new level is different from the current one
             {
                 randomLevelID = (int)Random.Range(0, numberOfLevels);
