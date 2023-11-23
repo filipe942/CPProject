@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 61589183963250758}
   - component: {fileID: 114294267088222048}
   - component: {fileID: 114818248665003430}
-  - component: {fileID: 5904100162452763284}
+  - component: {fileID: 2394490558224836053}
   - component: {fileID: 82706325680482814}
   m_Layer: 0
-  m_Name: AI_Stronger_Orc
+  m_Name: AI_SmallDemon
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.17}
+  m_Size: {x: 0.10140997, y: 0.1}
   m_EdgeRadius: 0
 --- !u!114 &114294267088222048
 MonoBehaviour:
@@ -153,7 +153,7 @@ MonoBehaviour:
     max: 100
   attackDamage: 0
   attackSpeed: 0
---- !u!114 &5904100162452763284
+--- !u!114 &2394490558224836053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1014348369010946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca17e3efd78c6ff44898b4ea772107b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b8540966f9b4074fa51a5b48d825293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   aiStats: {fileID: 0}
@@ -600,7 +600,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 1846535103, guid: 11216db7b4ee3e040b2e670de308b9f3, type: 3}
+  m_Sprite: {fileID: -1468906545, guid: 11216db7b4ee3e040b2e670de308b9f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -621,7 +621,7 @@ Animator:
   m_GameObject: {fileID: 1830585268253970}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2ffa407b5c153a84782ab670225aaf78, type: 2}
+  m_Controller: {fileID: 9100000, guid: 36ca79497b024164eb09b471287996e0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

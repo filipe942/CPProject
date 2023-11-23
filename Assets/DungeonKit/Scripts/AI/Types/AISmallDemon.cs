@@ -1,10 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace DungeonKIT
 {
-    public class AIOrc : AICombat
+    public class AISmallDemon: AICombat
     {
         GameObject player;
 
@@ -14,7 +14,7 @@ namespace DungeonKIT
         private void Start()
         {
             aiStats = GetComponent<AIStats>();
-            aiStats.enemyHP = new DoubleFloat(100f, 100f); // HP do orc é definido aqui
+            aiStats.enemyHP = new DoubleFloat(20f, 20f); // HP do orc é definido aqui
             aiStats.attackDamage=5f;
             timeBtwAttacks = startTimeBtnAttacks; // Initialize the time between attacks
         }
@@ -36,7 +36,7 @@ namespace DungeonKIT
                 MeleeAttack(player, aiStats.attackDamage); // Call your MeleeAttack method with appropriate parameters
 
                 // Velocidade dos ataques do orc é definido aqui
-                timeBtwAttacks = 1-(aiStats.attackSpeed*0.50f); // Set time to start again
+                timeBtwAttacks = 1-(aiStats.attackSpeed*0.20f); // Set time to start again
             }
             else
             {

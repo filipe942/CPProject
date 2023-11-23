@@ -60,10 +60,10 @@ namespace DungeonKIT
                 Instance = this;
             }
 
-            HP = new DoubleFloat(200f, 200f);
+            HP = new DoubleFloat(500f, 500f);
             Armor = 0.5f;
             Agility = 1 + (0.1f / 4);
-            Damage = 0.5f;
+            Damage = 100f;
 
             PlayerStats.Instance.InitializeFromPlayer(this);
         }

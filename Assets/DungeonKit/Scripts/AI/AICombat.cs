@@ -24,6 +24,24 @@ namespace DungeonKIT
 
             rangeShot.transform.up = dir;
         }
+
+        public virtual void RangeAttackMultipleDirection(GameObject rangeWeapon, Transform target)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                GameObject rangeShot = Instantiate(rangeWeapon); //Creates a weapon
+                rangeShot.transform.position = transform.position; //Moves a weapon to its position
+
+                // Calculate the angle for each direction
+                float angle = i * 45f;
+
+                // Convert angle to a direction vector
+                Vector2 dir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+
+                rangeShot.transform.up = dir;
+            }
+        }
+
         //Virtual method for Melee Attack, reconfigured in child classes
         public virtual void MeleeAttack(GameObject target, float attackDamage)
         {

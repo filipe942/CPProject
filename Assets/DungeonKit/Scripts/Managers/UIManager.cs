@@ -27,6 +27,8 @@ namespace DungeonKIT
         public GameObject pauseGo;
         public GameObject gameoverGO;
         public GameObject levelWonGO;
+        public GameObject levelWonBossGO;
+
         public GameObject mobileUIGO;
         [Header("Status")]
         public bool isPause;
@@ -104,6 +106,11 @@ namespace DungeonKIT
 
         public void LevelWon(){
             levelWonGO.SetActive(true);
+            AudioManager.Instance.Play(PlayerStats.Instance.audioSource, AudioManager.Instance.openNextLvlDoor, false);
+        }
+
+        public void LevelBossWon(){
+            levelWonBossGO.SetActive(true);
             AudioManager.Instance.Play(PlayerStats.Instance.audioSource, AudioManager.Instance.openNextLvlDoor, false);
         }
 

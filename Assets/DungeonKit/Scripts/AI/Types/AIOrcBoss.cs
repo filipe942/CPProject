@@ -22,7 +22,7 @@ namespace DungeonKIT
             aiStats = GetComponent<AIStats>(); 
             aiStats.enemyHP= new DoubleFloat(1500f, 1500f); //HP do orc boss é definido aqui
             aiStats.attackDamage= 20f;
-            aiStats.onDeath += Death; //Adds to the event variable in the parent class
+            //aiStats.onDeath += Death; //Adds to the event variable in the parent class
         }
 
 
@@ -76,11 +76,11 @@ namespace DungeonKIT
         }
 
         //if boss die level complete
-        void Death()
+        /*void Death()
         {
             Debug.Log("Level complete!");
             GameManager.Instance.LevelComplete();
-        }
+        }*/
 
         //IEnumerator for smooth jump
         IEnumerator IAttack()
