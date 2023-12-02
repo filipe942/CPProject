@@ -88,6 +88,16 @@ namespace DungeonKIT
             if (ScenesManager.Instance.continueGame)
                 SaveManager.Load();
         }
+        public static PlayerStats GetInstance()
+        {
+            if (Instance == null)
+            {
+                // You might want to add some error handling here
+                Debug.LogError("PlayerStats is not initialized!");
+            }
+
+            return Instance;
+        }
 
         public void InitializeFromPlayer(Player player)
             {

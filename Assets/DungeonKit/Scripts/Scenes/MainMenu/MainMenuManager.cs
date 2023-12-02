@@ -17,7 +17,13 @@ namespace DungeonKIT
         private void Start()
         {
             if (PlayerPrefs.GetString("Saved_Level") != "")
-                loadGameBtn.SetActive(true);
+            {
+                if(loadGameBtn != null)
+                {
+                    loadGameBtn.SetActive(true);
+                }
+            }
+                
 
             AudioManager.Instance.PlayMusic(AudioManager.Instance.music);
         }
@@ -39,6 +45,26 @@ namespace DungeonKIT
         public void NewGame()
         {
             ScenesManager.Instance.LoadLoadingScene("Lvl_0"); //Load level 1
+        }
+
+        public void Tasks()
+        {
+            ScenesManager.Instance.LoadLoadingScene("TaskMenuTodos");
+        }
+        
+        public void DungeonsScreen()
+        {
+            ScenesManager.Instance.LoadLoadingScene("DungeonsScreen");
+        }
+
+        public void MainMenu()
+        {
+            ScenesManager.Instance.LoadLoadingScene("MainMenu");
+        }
+
+        public void Stats()
+        {
+            ScenesManager.Instance.LoadLoadingScene("StatsScreen");
         }
 
         public void LoadGame()

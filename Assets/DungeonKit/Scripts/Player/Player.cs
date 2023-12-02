@@ -65,8 +65,28 @@ namespace DungeonKIT
             Agility = 1 + (0.1f / 4);
             Damage = 100f;
 
-            PlayerStats.Instance.InitializeFromPlayer(this);
-        }
+            if (SaveManager.HasSave())
+            {
+                print("sda");
+                // Load saved stats
+                SaveManager.Load();
+            }
+            else
+            {
+                print("else");
+                // No save found, create a new PlayerStats instance
+                GameObject playerStatsObject = new GameObject("PlayerStats");
+                PlayerStats playerStatsInstance = playerStatsObject.AddComponent<PlayerStats>();
 
+                // Set the instance as the newly created PlayerStats
+                PlayerStats.Instance = playerStatsInstance;
+
+                // Mark the PlayerStats GameObject as not to be destroyed on scene changes
+                DontDestroyOnLoad(playerStatsObject);
+
+                // Initialize PlayerStats from the current player
+                PlayerStats.Instance.InitializeFromPlayer(this);
+            }
+        }
     }
 }
