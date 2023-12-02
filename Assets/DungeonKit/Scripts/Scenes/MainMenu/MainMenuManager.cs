@@ -67,6 +67,11 @@ namespace DungeonKIT
             ScenesManager.Instance.LoadLoadingScene("StatsScreen");
         }
 
+        public void CreateToDos()
+        {
+            ScenesManager.Instance.LoadLoadingScene("CreateToDos");
+        }
+
         public void LoadGame()
         {
             ScenesManager.Instance.continueGame = true;
