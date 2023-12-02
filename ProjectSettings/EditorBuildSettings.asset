@@ -62,4 +62,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/DungeonKit/Scenes/TaskMenuTodos.unity
     guid: 568a8d69c3903b64a8b202283a26a006
+  - enabled: 1
+    path: Assets/DungeonKit/Scenes/DungeonsScreen.unity
+    guid: ce9fe6af33745c8408f5e1e7d856d2b2
   m_configObjects: {}
