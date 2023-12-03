@@ -2472,7 +2472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7601a30f482944e89a001efb7bdd75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabToSpawn: {fileID: 0}
+  prefabToSpawn: {fileID: 1266476316889426, guid: 733893f83ce89ab479b76782373f4ed5,
+    type: 3}
 --- !u!114 &159992298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2685,7 +2686,7 @@ PrefabInstance:
     - target: {fileID: 114719863025381182, guid: b9a9071020dc0114aafa14e596e7409a,
         type: 3}
       propertyPath: lockedDoor
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
