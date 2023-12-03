@@ -299,7 +299,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -825, y: -0.48395}
+  m_AnchoredPosition: {x: -829, y: 0.48394}
   m_SizeDelta: {x: 529.145, y: 1860}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &94141302
@@ -1076,7 +1076,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 69.4, y: 19.9}
+  m_AnchoredPosition: {x: 69.400024, y: 19.9}
   m_SizeDelta: {x: 292.1694, y: 77.67163}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &442566336
@@ -1430,8 +1430,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.226059, y: -281.95703}
-  m_SizeDelta: {x: 872.02, y: 906.239}
+  m_AnchoredPosition: {x: -14.226074, y: -285.675}
+  m_SizeDelta: {x: 872.02, y: 913.676}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &597010379
 MonoBehaviour:
@@ -1688,7 +1688,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 714408137}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1538598539}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &714408137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2067,7 +2079,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9.600098, y: -1.7}
+  m_AnchoredPosition: {x: -9.599976, y: -1.7}
   m_SizeDelta: {x: -43.70752, y: 95}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &892742296
@@ -3169,12 +3181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225d0b18e61e35e4998c5f8651d5d05b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  escreverDamage: {fileID: 1534089619}
-  escreverDefence: {fileID: 1670005261}
-  escreverAgility: {fileID: 1904304897}
-  escreverHP: {fileID: 1550130277}
-  escreverMoney: {fileID: 1162476072}
-  escreverLVL: {fileID: 393399153}
 --- !u!4 &1164944832
 Transform:
   m_ObjectHideFlags: 0
@@ -5140,8 +5146,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.0048828125, y: 0}
+  m_SizeDelta: {x: 0.0098877, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1830080622
 MonoBehaviour:
@@ -5157,7 +5163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

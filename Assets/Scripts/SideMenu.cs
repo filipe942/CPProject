@@ -56,7 +56,7 @@ public class SideMenu : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
     {
         if (side == Side.right)
             return width * 1.4f;
-        return width *1.1f;
+        return width * 1.1f;
     }
 
     private IEnumerator HandleMenuSlide(float slideTime, float startingX, float targetX)
