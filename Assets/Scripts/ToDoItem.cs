@@ -68,25 +68,25 @@ public class ToDoItem : MonoBehaviour
 
     public void SelectTrivial()
     {
-        difficultyText = "1";
+        difficultyText = "Trivial";
         UpdateButtonSelection(trivialButton);
     }
 
     public void SelectEasy()
     {
-        difficultyText = "2";
+        difficultyText = "Easy";
         UpdateButtonSelection(easyButton);
     }
 
     public void SelectMedium()
     {
-        difficultyText = "3";
+        difficultyText = "Medium";
         UpdateButtonSelection(mediumButton);
     }
 
     public void SelectHard()
     {
-        difficultyText = "4";
+        difficultyText = "Hard";
         UpdateButtonSelection(hardButton);
     }
 
