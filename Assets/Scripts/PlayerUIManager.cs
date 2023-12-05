@@ -118,18 +118,18 @@ namespace DungeonKIT
 
         public void RemoveAgl()
         {
-            if (playerStatsReference.Points != 0 && playerStatsReference.Agility > 1f)
+            if (playerStatsReference.Points != 0 && playerStatsReference.Agility > 0.2f)
             {
-                if (playerStatsReference.Agility > 1)
+                if (playerStatsReference.Agility > 0.2)
                 {
                     playerStatsReference.Agility -= 0.01f;
                     playerStatsReference.Points += 1;
                     SaveManager.Save();
                     UpdateUI();
                 }
-                if (playerStatsReference.Agility <= 1)
+                if (playerStatsReference.Agility <= 0.2)
                 {
-                    playerStatsReference.Agility = 1f;
+                    playerStatsReference.Agility = 0.2f;
                     playerStatsReference.Points += 1;
                     SaveManager.Save();
                     UpdateUI();

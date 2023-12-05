@@ -69,8 +69,8 @@ namespace DungeonKIT
 
             HP = new DoubleFloat(500f, 500f);
             Armor = 0.5f;
-            Agility = 1 + (0.1f / 4);
-            Damage = 100f;
+            Agility = 0.2f;
+            Damage = 3f;
             Points = 0;
 
             if (SaveManager.HasSave())
