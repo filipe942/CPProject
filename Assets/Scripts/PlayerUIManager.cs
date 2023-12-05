@@ -19,9 +19,9 @@ namespace DungeonKIT
         {
             playerStatsReference = PlayerStats.Instance;
 
-            if (moneyText != null){
+            /*if (moneyText != null){
                 AddMoney();
-            }
+            }*/
 
             // Update UI based on PlayerStats
             UpdateUI();
@@ -109,7 +109,7 @@ namespace DungeonKIT
                 if(playerStatsReference.Damage > 1)
                 {
                     playerStatsReference.Damage -= 1;
-                    playerStatsReference.Points -= 1;
+                    playerStatsReference.Points += 1;
                     SaveManager.Save();
                     UpdateUI();
                 }
@@ -123,14 +123,14 @@ namespace DungeonKIT
                 if (playerStatsReference.Agility > 1)
                 {
                     playerStatsReference.Agility -= 0.01f;
-                    playerStatsReference.Points -= 1;
+                    playerStatsReference.Points += 1;
                     SaveManager.Save();
                     UpdateUI();
                 }
                 if (playerStatsReference.Agility <= 1)
                 {
                     playerStatsReference.Agility = 1f;
-                    playerStatsReference.Points -= 1;
+                    playerStatsReference.Points += 1;
                     SaveManager.Save();
                     UpdateUI();
                 }
@@ -144,14 +144,14 @@ namespace DungeonKIT
                 if (playerStatsReference.Armor > 0)
                 {
                     playerStatsReference.Armor -= 0.01f;
-                    playerStatsReference.Points -= 1;
+                    playerStatsReference.Points += 1;
                     SaveManager.Save();
                     UpdateUI();
                 }
                 if (playerStatsReference.Armor <= 0)
                 {
                     playerStatsReference.Armor = 0f;
-                    playerStatsReference.Points -= 1;
+                    playerStatsReference.Points += 1;
                     SaveManager.Save();
                     UpdateUI();
                 }
