@@ -1,11 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine;
 
 public class LoadTodos : MonoBehaviour
 {
+    private List<ToDoItem.ToDo> todoList = new List<ToDoItem.ToDo>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class LoadTodos : MonoBehaviour
                 using (FileStream fileStream = File.Open(filePath, FileMode.Open))
                 {
                     // Deserialize the binary data into the list
-                    List<ToDoItem.ToDo> todoList = (List<ToDoItem.ToDo>)formatter.Deserialize(fileStream);
+                    todoList = (List<ToDoItem.ToDo>)formatter.Deserialize(fileStream);
 
                     // Print the loaded todoList
                     PrintLoadedToDoList(todoList);
