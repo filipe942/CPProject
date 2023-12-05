@@ -5216,11 +5216,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d46fd7b17caa0d4b9c785f742c7ff43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpText: {fileID: 0}
-  strText: {fileID: 0}
-  aglText: {fileID: 0}
-  defText: {fileID: 0}
-  moneyText: {fileID: 0}
+  hpText: {fileID: 1550130277}
+  strText: {fileID: 1534089619}
+  aglText: {fileID: 1904304897}
+  defText: {fileID: 1670005261}
+  moneyText: {fileID: 1162476072}
+  pointsText: {fileID: 0}
+  moneyWon: {fileID: 0}
 --- !u!224 &1835355057
 RectTransform:
   m_ObjectHideFlags: 0
