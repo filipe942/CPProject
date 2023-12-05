@@ -49,6 +49,13 @@ namespace DungeonKIT
             set { _money = value; }
         }
 
+        [SerializeField] private int _points;
+        public int Points
+        {
+            get { return _points; }
+            set { _points = value; }
+        }
+
         [SerializeField] private Dictionary<int, bool> _doorKeys = new Dictionary<int, bool>();
         public Dictionary<int, bool> DoorKeys
         {
@@ -105,6 +112,7 @@ namespace DungeonKIT
                 Armor = player.Armor;
                 Agility = player.Agility;
                 Damage = player.Damage;
+                Points = player.Points;
             }
 
         //Taking damage method

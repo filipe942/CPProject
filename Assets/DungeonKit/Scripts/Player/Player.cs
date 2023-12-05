@@ -49,6 +49,13 @@ namespace DungeonKIT
             set { _money = value; }
         }
 
+        [SerializeField] private int _points;
+        public int Points
+        {
+            get { return _points; }
+            set { _points = value; }
+        }
+
         private void Awake()
         {
             if (Instance != null)
@@ -64,6 +71,7 @@ namespace DungeonKIT
             Armor = 0.5f;
             Agility = 1 + (0.1f / 4);
             Damage = 100f;
+            Points = 0;
 
             if (SaveManager.HasSave())
             {
