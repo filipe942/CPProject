@@ -42,13 +42,6 @@ namespace DungeonKIT
             set { _damage = value; }
         }
 
-        [SerializeField] private int _money;
-        public int Money
-        {
-            get { return _money; }
-            set { _money = value; }
-        }
-
         [SerializeField] private int _points;
         public int Points
         {
@@ -67,7 +60,7 @@ namespace DungeonKIT
                 Instance = this;
             }
 
-            HP = new DoubleFloat(500f, 500f);
+            HP = new DoubleFloat(50f, 50f);
             Armor = 0.5f;
             Agility = 0.2f;
             Damage = 3f;

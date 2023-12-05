@@ -73,7 +73,7 @@ namespace DungeonKIT
         public void UpdateUI()
         {
             UpdateHP();
-            moneyText.text = playerStats.Money.ToString(); //Update ui money text
+            //moneyText.text = playerStats.Money.ToString(); //Update ui money text
             keyText.text = playerStats.DoorKeys.Count.ToString();
         }
 

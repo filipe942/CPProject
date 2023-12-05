@@ -1427,9 +1427,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 566126667}
-        m_TargetAssemblyTypeName: TaskMenu, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 425931723}
+        m_TargetAssemblyTypeName: DungeonKIT.MainMenuManager, Assembly-CSharp
+        m_MethodName: DungeonsScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1870,7 +1870,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 661432905}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 425931723}
+        m_TargetAssemblyTypeName: DungeonKIT.MainMenuManager, Assembly-CSharp
+        m_MethodName: Habits
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &661432905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3235,7 +3247,7 @@ MonoBehaviour:
   strText: {fileID: 0}
   aglText: {fileID: 0}
   defText: {fileID: 0}
-  moneyText: {fileID: 0}
+  pointsText: {fileID: 0}
 --- !u!224 &1138678548
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3888,9 +3900,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1287292702}
-        m_TargetAssemblyTypeName: TaskMenu, Assembly-CSharp
-        m_MethodName: StatsScreen
+      - m_Target: {fileID: 425931723}
+        m_TargetAssemblyTypeName: DungeonKIT.MainMenuManager, Assembly-CSharp
+        m_MethodName: Stats
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4572,9 +4584,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1475100855}
-        m_TargetAssemblyTypeName: TaskMenu, Assembly-CSharp
-        m_MethodName: TaskScreen
+      - m_Target: {fileID: 425931723}
+        m_TargetAssemblyTypeName: DungeonKIT.MainMenuManager, Assembly-CSharp
+        m_MethodName: Tasks
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

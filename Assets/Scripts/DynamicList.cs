@@ -10,6 +10,8 @@ public class DynamicList : MonoBehaviour
     public Transform listItemHolder;
     public int numOfListItems;
 
+    [SerializeField] Text ToDoCount;
+
     private void Start()
     {
         LoadAllTodos();
@@ -29,6 +31,14 @@ public class DynamicList : MonoBehaviour
             // Set the data for the ToDoListItem based on the ToDo item in the list
             listItemScript.SetToDoItemData(todoList[i].title, todoList[i].description, todoList[i].difficulty);
         }
+
+        ToDoCount.text = todoList.Count.ToString();
+    }
+
+    void Update()
+    {        
+        List<ToDoItem.ToDo> todoList = GetLoadedToDoList();
+        ToDoCount.text = todoList.Count.ToString();
     }
 
     private void LoadAllTodos()

@@ -8,7 +8,7 @@ namespace DungeonKIT
     {
         public void OnPickedUp() //Method Pick Up item
         {
-            PlayerStats.Instance.Money++; //Player +1 to money
+            //PlayerStats.Instance.Money++; //Player +1 to money
             UIManager.Instance.UpdateUI(); //Update UI
         }
 

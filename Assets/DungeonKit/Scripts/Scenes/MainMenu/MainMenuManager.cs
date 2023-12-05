@@ -52,6 +52,16 @@ namespace DungeonKIT
             ScenesManager.Instance.LoadLoadingScene("TaskMenuTodos");
         }
         
+        public void Daily()
+        {
+            ScenesManager.Instance.LoadLoadingScene("TaskMenuFrequents");
+        }
+
+        public void Habits()
+        {
+            ScenesManager.Instance.LoadLoadingScene("TaskMenuHabits");
+        }
+
         public void DungeonsScreen()
         {
             ScenesManager.Instance.LoadLoadingScene("DungeonsScreen");
@@ -70,6 +80,16 @@ namespace DungeonKIT
         public void CreateToDos()
         {
             ScenesManager.Instance.LoadLoadingScene("CreateToDos");
+        }
+
+        public void CreateDailys()
+        {
+            ScenesManager.Instance.LoadLoadingScene("CreateFrequents");
+        }
+
+        public void CreateHabits()
+        {
+            ScenesManager.Instance.LoadLoadingScene("CreateHabit");
         }
 
         public void LoadGame()

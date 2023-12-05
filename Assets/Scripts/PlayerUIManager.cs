@@ -9,19 +9,13 @@ namespace DungeonKIT
         [SerializeField] Text strText;
         [SerializeField] Text aglText;
         [SerializeField] Text defText;
-        [SerializeField] Text moneyText;
         [SerializeField] Text pointsText;
-        [SerializeField] Text moneyWon;
 
         private PlayerStats playerStatsReference;
 
         void Start()
         {
             playerStatsReference = PlayerStats.Instance;
-
-            /*if (moneyText != null){
-                AddMoney();
-            }*/
 
             // Update UI based on PlayerStats
             UpdateUI();
@@ -34,13 +28,12 @@ namespace DungeonKIT
             hpText.text = playerStatsReference.HP.max.ToString();
             strText.text = playerStatsReference.Damage.ToString();
             
-            float agility = (playerStatsReference.Agility *100f) - 100f;
+            float agility = (playerStatsReference.Agility *100f);
             aglText.text = agility.ToString();
 
             float armor = playerStatsReference.Armor*100f;
             defText.text = armor.ToString();
 
-            moneyText.text = playerStatsReference.Money.ToString();
             pointsText.text = playerStatsReference.Points.ToString();
                 
             // Update other UI elements as needed
@@ -104,7 +97,7 @@ namespace DungeonKIT
 
         public void RemoveStr()
         {
-            if (playerStatsReference.Points != 0 && playerStatsReference.Damage > 0)
+            if (playerStatsReference.Damage > 0)
             {
                 if(playerStatsReference.Damage > 1)
                 {
@@ -118,7 +111,7 @@ namespace DungeonKIT
 
         public void RemoveAgl()
         {
-            if (playerStatsReference.Points != 0 && playerStatsReference.Agility > 0.2f)
+            if (playerStatsReference.Agility > 0.2f)
             {
                 if (playerStatsReference.Agility > 0.2)
                 {
@@ -139,7 +132,7 @@ namespace DungeonKIT
 
         public void RemoveDef()
         {
-            if (playerStatsReference.Points != 0 && playerStatsReference.Armor > 0)
+            if (playerStatsReference.Armor > 0)
             {
                 if (playerStatsReference.Armor > 0)
                 {
@@ -157,18 +150,5 @@ namespace DungeonKIT
                 }
             }
         }
-
-        public void AddMoney()
-        {
-            int money = int.Parse(moneyWon.text);
-            playerStatsReference.Money += money;
-        }
-
-        public void RemoveMoney()
-        {
-            int money = int.Parse(moneyWon.text);
-            playerStatsReference.Money -= money;
-        }
-    
     }
 }

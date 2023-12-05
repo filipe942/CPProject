@@ -12,7 +12,7 @@ namespace DungeonKIT
             PlayerPrefs.SetFloat("Saved_Armor", PlayerStats.Instance.Armor);
             PlayerPrefs.SetFloat("Saved_Agility",PlayerStats.Instance.Agility);            
 
-            PlayerPrefs.SetInt("Saved_Money", PlayerStats.Instance.Money);
+            //PlayerPrefs.SetInt("Saved_Money", PlayerStats.Instance.Money);
 
             PlayerPrefs.SetString("Saved_Level", SceneManager.GetActiveScene().name);
 
@@ -33,7 +33,7 @@ namespace DungeonKIT
                 PlayerStats.Instance.Damage = PlayerPrefs.GetFloat("Saved_Damage");
                 PlayerStats.Instance.Armor = PlayerPrefs.GetFloat("Saved_Armor");
                 PlayerStats.Instance.Agility = PlayerPrefs.GetFloat("Saved_Agility");
-                PlayerStats.Instance.Money = PlayerPrefs.GetInt("Saved_Money");
+                //PlayerStats.Instance.Money = PlayerPrefs.GetInt("Saved_Money");
             }
         }
 
