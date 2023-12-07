@@ -9,14 +9,16 @@ public class FrequentsListItem : MonoBehaviour
     public Text titleText;
     public Text descriptionText;
     public Text difficultyText;
+    public Text frequencyText;
 
     private List<FrequentsItem.Frequents> frequentsList;
 
-    public void SetFrequentsItemData(string title, string description, string difficulty)
+    public void SetFrequentsItemData(string title, string description, string difficulty, string frequency)
     {
         titleText.text = title;
         descriptionText.text = description;
         difficultyText.text = difficulty;
+        frequencyText.text = frequency;
     }
 
     public void DeleteFrequentsItem()
@@ -26,7 +28,8 @@ public class FrequentsListItem : MonoBehaviour
         int index = frequentsList.FindIndex(frequents =>
             frequents.title == titleText.text &&
             frequents.description == descriptionText.text &&
-            frequents.difficulty == difficultyText.text
+            frequents.difficulty == difficultyText.text &&
+            frequents.frequency == frequencyText.text
         );
 
         if (index != -1)
@@ -47,7 +50,8 @@ public class FrequentsListItem : MonoBehaviour
         int index = frequentsList.FindIndex(frequents =>
             frequents.title == titleText.text &&
             frequents.description == descriptionText.text &&
-            frequents.difficulty == difficultyText.text
+            frequents.difficulty == difficultyText.text &&
+            frequents.frequency == frequencyText.text
         );
 
         if (index != -1)
@@ -78,7 +82,7 @@ public class FrequentsListItem : MonoBehaviour
         }
     }
 
-    
+
 
     private List<FrequentsItem.Frequents> GetFrequentsList()
     {

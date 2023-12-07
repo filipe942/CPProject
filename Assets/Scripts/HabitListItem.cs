@@ -156,7 +156,7 @@ public class HabitListItem : MonoBehaviour
         }
         return new List<HabitItem.Habit>();
     }
-
+    
     private string GetHabitListFilePath()
     {
         string fileName = "HabitList.dat";
