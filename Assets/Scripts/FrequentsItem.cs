@@ -97,23 +97,43 @@ public class FrequentsItem : MonoBehaviour
      public void SelectDaily()
     {
         frequencyText = "Daily";
-        UpdateButtonSelection(dailyButton);
+        UpdateButtonSelection2(dailyButton);
     }
 
      public void SelectWeekly()
     {
         frequencyText = "Weekly";
-        UpdateButtonSelection(weeklyButton);
+        UpdateButtonSelection2(weeklyButton);
     }
 
      public void SelectMonthly()
     {
         frequencyText = "Monthly";
-        UpdateButtonSelection(monthlyButton);
+        UpdateButtonSelection2(monthlyButton);
     }
 
     // Helper method to update the button selection
     private void UpdateButtonSelection(Button newSelection)
+    {
+        // Unhighlight the previously selected button
+        if (selectedButton != null)
+        {
+            ColorBlock previousColors = selectedButton.colors;
+            previousColors.normalColor = Color.white;
+            selectedButton.colors = previousColors;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(selectedButton.transform as RectTransform);
+        }
+
+        // Highlight the newly selected button
+        selectedButton = newSelection;
+        ColorBlock newColors = selectedButton.colors;
+        newColors.normalColor = Color.red;
+        selectedButton.colors = newColors;
+
+        Canvas.ForceUpdateCanvases();
+    }
+
+    private void UpdateButtonSelection2(Button newSelection)
     {
         // Unhighlight the previously selected button
         if (selectedButton != null)

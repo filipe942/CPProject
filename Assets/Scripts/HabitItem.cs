@@ -97,17 +97,37 @@ public class HabitItem : MonoBehaviour
     public void SelectPositive()
     {
         typeText = "Positive";
-        UpdateButtonSelection(positiveButton);
+        UpdateButtonSelection2(positiveButton);
     }
 
     public void SelectNegative()
     {
         typeText = "Negative";
-        UpdateButtonSelection(negativeButton);
+        UpdateButtonSelection2(negativeButton);
     }
 
     // Helper method to update the button selection
     private void UpdateButtonSelection(Button newSelection)
+    {
+        // Unhighlight the previously selected button
+        if (selectedButton != null)
+        {
+            ColorBlock previousColors = selectedButton.colors;
+            previousColors.normalColor = Color.white;
+            selectedButton.colors = previousColors;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(selectedButton.transform as RectTransform);
+        }
+
+        // Highlight the newly selected button
+        selectedButton = newSelection;
+        ColorBlock newColors = selectedButton.colors;
+        newColors.normalColor = Color.red;
+        selectedButton.colors = newColors;
+
+        Canvas.ForceUpdateCanvases();
+    }
+
+    private void UpdateButtonSelection2(Button newSelection)
     {
         // Unhighlight the previously selected button
         if (selectedButton != null)

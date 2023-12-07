@@ -232,7 +232,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 82745219}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1156407776}
+        m_TargetAssemblyTypeName: FrequentsItem, Assembly-CSharp
+        m_MethodName: SelectEasy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &82745219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,7 +552,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 167311558}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1156407776}
+        m_TargetAssemblyTypeName: FrequentsItem, Assembly-CSharp
+        m_MethodName: SelectMonthly
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &167311558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1418,7 +1442,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 553419651}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1156407776}
+        m_TargetAssemblyTypeName: FrequentsItem, Assembly-CSharp
+        m_MethodName: SelectMedium
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &553419651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2001,7 +2037,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 735834641}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1156407776}
+        m_TargetAssemblyTypeName: FrequentsItem, Assembly-CSharp
+        m_MethodName: SelectHard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &735834641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3178,7 +3226,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1056701118}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1156407776}
+        m_TargetAssemblyTypeName: FrequentsItem, Assembly-CSharp
+        m_MethodName: SelectTrivial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1056701118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3378,7 +3438,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1087324616}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1156407776}
+        m_TargetAssemblyTypeName: FrequentsItem, Assembly-CSharp
+        m_MethodName: SelectWeekly
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1087324616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4428,7 +4500,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1438651503}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1156407776}
+        m_TargetAssemblyTypeName: FrequentsItem, Assembly-CSharp
+        m_MethodName: SelectDaily
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1438651503
 MonoBehaviour:
   m_ObjectHideFlags: 0
