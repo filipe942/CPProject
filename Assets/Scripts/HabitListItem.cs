@@ -11,7 +11,7 @@ public class HabitListItem : MonoBehaviour
     public Text difficultyText;
     public Text typeText;
 
-    private List<HabitItem.Frequents> habitList;
+    private List<HabitItem.Habit> habitList;
 
     public void SetHabitItemData(string title, string description, string difficulty, string type)
     {
@@ -56,7 +56,7 @@ public class HabitListItem : MonoBehaviour
 
         if (index != -1)
         {
-            int xpPoints = CalculateXpPoints(difficultyText.text);
+            int xpPoints = CalculateXpPoints(difficultyText.text, typeText.text);
             Debug.Log($"Gained {xpPoints} XP points for completing task with difficulty: {difficultyText.text}");
             habitList.RemoveAt(index);
             SaveHabitList(habitList);
@@ -65,7 +65,7 @@ public class HabitListItem : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private int CalculateXpPoints(string difficulty)
+    private int CalculateXpPoints(string difficulty, string type)
     {
         if (type == "Positive")
         {
@@ -98,6 +98,11 @@ public class HabitListItem : MonoBehaviour
                 default:
                     return 0;
             } 
+        }
+        else
+        {
+            // Handle other cases for 'type'
+            return 0; // or another appropriate default value
         }
     }
 
@@ -158,3 +163,4 @@ public class HabitListItem : MonoBehaviour
         return Path.Combine(Application.persistentDataPath, fileName);
     }
 }
+

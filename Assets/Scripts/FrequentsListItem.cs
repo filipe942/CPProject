@@ -78,6 +78,8 @@ public class FrequentsListItem : MonoBehaviour
         }
     }
 
+    
+
     private List<FrequentsItem.Frequents> GetFrequentsList()
     {
         if (frequentsList == null)
@@ -134,6 +136,4 @@ public class FrequentsListItem : MonoBehaviour
         string fileName = "FrequentsList.dat";
         return Path.Combine(Application.persistentDataPath, fileName);
     }
-}
-
 }

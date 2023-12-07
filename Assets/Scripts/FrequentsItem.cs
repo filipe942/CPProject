@@ -27,7 +27,7 @@ public class FrequentsItem : MonoBehaviour
     {
         public string title;
         public string description;
-        public string frenquency;
+        public string frequency;
         public string difficulty;
     }
 
@@ -96,19 +96,19 @@ public class FrequentsItem : MonoBehaviour
 
      public void SelectDaily()
     {
-        difficultyText = "Daily";
+        frequencyText = "Daily";
         UpdateButtonSelection(dailyButton);
     }
 
      public void SelectWeekly()
     {
-        difficultyText = "Weekly";
+        frequencyText = "Weekly";
         UpdateButtonSelection(weeklyButton);
     }
 
      public void SelectMonthly()
     {
-        difficultyText = "Monthly";
+        frequencyText = "Monthly";
         UpdateButtonSelection(monthlyButton);
     }
 
@@ -133,13 +133,38 @@ public class FrequentsItem : MonoBehaviour
         Canvas.ForceUpdateCanvases();
     }
 
+    public void SetFrequentsData()
+    {
+        Debug.Log("SetFrequentsData");
+
+        Frequents newFrequents = new Frequents
+        {
+            title = titleText.text,
+            description = descriptionText.text,
+            //endDate = endDateText.text,
+            frequency = frequencyText,
+            difficulty = difficultyText
+        };
+
+        // Add the new Frequents to the list
+        frequentsList.Add(newFrequents);
+
+        // Save the updated list to a file using binary serialization
+        SaveFrequentsList();
+
+        PrintSavedFrequentsList();
+
+        // Load the next scene
+        LoadNextScene();
+    }
+
     private void PrintSavedFrequentsList()
     {
         Debug.Log("Saved Frequents List:");
 
         foreach (Frequents frequents in frequentsList)
         {
-            Debug.Log($"Title: {frequents.title}, Description: {frequents.description}, Frequency: {frequents.frenquency}, Difficulty: {frequents.difficulty}");
+            Debug.Log($"Title: {frequents.title}, Description: {frequents.description}, Frequency: {frequents.frequency}, Difficulty: {frequents.difficulty}");
         }
     }
 
@@ -149,7 +174,7 @@ public class FrequentsItem : MonoBehaviour
 
         foreach (Frequents frequents in frequentsList)
         {
-            Debug.Log($"Title: {frequents.title}, Description: {frequents.description}, Frequency: {frequents.frenquency}, Difficulty: {frequents.difficulty}");
+            Debug.Log($"Title: {frequents.title}, Description: {frequents.description}, Frequency: {frequents.frequency}, Difficulty: {frequents.difficulty}");
         }
     }
 

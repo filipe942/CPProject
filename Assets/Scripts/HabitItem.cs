@@ -96,13 +96,13 @@ public class HabitItem : MonoBehaviour
 
     public void SelectPositive()
     {
-        difficultyText = "Positive";
+        typeText = "Positive";
         UpdateButtonSelection(positiveButton);
     }
 
     public void SelectNegative()
     {
-        difficultyText = "Negative";
+        typeText = "Negative";
         UpdateButtonSelection(negativeButton);
     }
 
@@ -125,6 +125,31 @@ public class HabitItem : MonoBehaviour
         selectedButton.colors = newColors;
 
         Canvas.ForceUpdateCanvases();
+    }
+
+    public void SetHabitData()
+    {
+        Debug.Log("SetHabitData");
+
+        Habit newHabit = new Habit
+        {
+            title = titleText.text,
+            description = descriptionText.text,
+            //endDate = endDateText.text,
+            type = typeText,
+            difficulty = difficultyText
+        };
+
+        // Add the new Habit to the list
+        habitList.Add(newHabit);
+
+        // Save the updated list to a file using binary serialization
+        SaveHabitList();
+
+        PrintSavedHabitList();
+
+        // Load the next scene
+        LoadNextScene();
     }
     
     private void PrintSavedHabitList()
