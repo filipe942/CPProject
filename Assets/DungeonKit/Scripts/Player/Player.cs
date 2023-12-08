@@ -49,6 +49,20 @@ namespace DungeonKIT
             set { _points = value; }
         }
 
+        [SerializeField] private int _level;
+        public int Level
+        {
+            get { return _level; }
+            set { _level = value; }
+        }
+
+        [SerializeField] private float _experiencePoints;
+        public float ExperiencePoints
+        {
+            get { return _experiencePoints; }
+            set { _experiencePoints = value; }
+        }
+
         private void Awake()
         {
             if (Instance != null)
@@ -65,11 +79,11 @@ namespace DungeonKIT
             Agility = 0.2f;
             Damage = 3f;
             Points = 0;
+            Level = 1;
+            ExperiencePoints = 0;
 
             if (SaveManager.HasSave())
             {
-                print("sda");
-                // Load saved stats
                 SaveManager.Load();
             }
             else

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using DungeonKIT;
 
 public class ToDoListItem : MonoBehaviour
 {
@@ -54,6 +55,7 @@ public class ToDoListItem : MonoBehaviour
         {
             int xpPoints = CalculateXpPoints(difficultyText.text);
             Debug.Log($"Gained {xpPoints} XP points for completing task with difficulty: {difficultyText.text}");
+            PlayerStats.Instance.GainXP(xpPoints);
             todoList.RemoveAt(index);
             SaveToDoList(todoList);
         }

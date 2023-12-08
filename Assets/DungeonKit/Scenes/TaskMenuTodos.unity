@@ -614,6 +614,8 @@ MonoBehaviour:
   aglText: {fileID: 1904304897}
   defText: {fileID: 1670005261}
   pointsText: {fileID: 0}
+  PlayerLvlPage: {fileID: 269012034}
+  PlayerLvlSideBar: {fileID: 393399153}
 --- !u!1 &269012032
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +686,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 19
+  m_Text: New
 --- !u!222 &269012035
 CanvasRenderer:
   m_ObjectHideFlags: 0

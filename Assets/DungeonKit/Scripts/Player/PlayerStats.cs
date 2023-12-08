@@ -56,12 +56,29 @@ namespace DungeonKIT
             set { _doorKeys = value; }
         }
 
+        [SerializeField] private int _level;
+        public int Level
+        {
+            get { return _level; }
+            set { _level = value; }
+        }
+
+        [SerializeField] private float _experiencePoints;
+        public float ExperiencePoints
+        {
+            get { return _experiencePoints; }
+            set { _experiencePoints = value; }
+        }
+
         [Header("Parameters")]
         public float timeToDamage; //Time for pause between AI damage
         bool isDamaged;
 
         [Header("Graphics")]
         public SpriteRenderer playerSprite; //Player sprite
+
+        [Header("Leveling")]
+        public float XPPerLevel = 50f;
 
         private void Awake()
         {
@@ -106,6 +123,8 @@ namespace DungeonKIT
                 Agility = player.Agility;
                 Damage = player.Damage;
                 Points = player.Points;
+                Level = player.Level;
+                ExperiencePoints = player.ExperiencePoints;
             }
 
         //Taking damage method
@@ -128,6 +147,31 @@ namespace DungeonKIT
                     Death(); //Lose 
                 }
             }
+        }
+        public void GainXP(int xp)
+        {
+            ExperiencePoints += xp;
+
+            // Check for level up
+            while (ExperiencePoints >= CalculateXPToNextLevel())
+            {
+                ExperiencePoints -= CalculateXPToNextLevel();
+                LevelUp();
+            }
+
+        }
+
+        private void LevelUp()
+        {
+            Level++;
+            XPPerLevel *= Level;
+
+            SaveManager.Save();
+        }
+
+        private float CalculateXPToNextLevel()
+        {
+            return XPPerLevel;
         }
         //Death method
         void Death()
