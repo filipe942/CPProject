@@ -83,27 +83,31 @@ namespace DungeonKIT
         private void Awake()
         {
             //Singleton
-            if (PlayerStats.Instance != null){Destroy(gameObject);}
-            else {Instance = this;}
+            if (PlayerStats.Instance != null && PlayerStats.Instance != this)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
 
-            HP = new DoubleFloat(100f, 100f);
+                /*
+                HP = new DoubleFloat(100f, 100f);
 
-            /*
-            HP = new DoubleFloat(100f, 100f);
+                Armor = 0f;
+                Agility = 1 + (0.1f / 4);
+                Damage = 0.1f;
+                */
 
-            Armor = 0f;
-            Agility = 1 + (0.1f / 4);
-            Damage = 0.1f;
-            */
+                // Get reference to the Player class
+                player = Player.Instance;
 
-            // Get reference to the Player class
-            player = Player.Instance;
-
-            // Initialize from the Player class
-            InitializeFromPlayer(player);
-
-            if (ScenesManager.Instance.continueGame)
-                SaveManager.Load();
+                // Initialize from the Player class
+                InitializeFromPlayer(player);
+                SaveManager.Load(); 
+                if (ScenesManager.Instance.continueGame)
+                    SaveManager.Load();
+            }
         }
         public static PlayerStats GetInstance()
         {
@@ -151,7 +155,7 @@ namespace DungeonKIT
         public void GainXP(int xp)
         {
             ExperiencePoints += xp;
-
+            SaveManager.Save();
             // Check for level up
             while (ExperiencePoints >= CalculateXPToNextLevel())
             {
@@ -165,6 +169,7 @@ namespace DungeonKIT
         {
             Level++;
             XPPerLevel *= Level;
+            Points++;
 
             SaveManager.Save();
         }

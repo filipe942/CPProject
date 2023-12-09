@@ -23,6 +23,11 @@ namespace DungeonKIT
             UpdateUI();
         }
 
+        private void Update()
+        {
+            UpdateUI();
+        }
+
 
         // Update the UI based on PlayerStats values
         public void UpdateUI()

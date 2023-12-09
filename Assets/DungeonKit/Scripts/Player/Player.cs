@@ -13,7 +13,7 @@ namespace DungeonKIT
         //PlayerStats playerStats = PlayerStats.Instance;
 
         [Header("Variables")]
-        [SerializeField] private DoubleFloat _HP = new DoubleFloat(3f, 3f);
+        [SerializeField] private DoubleFloat _HP;
         
         public DoubleFloat HP
         {
@@ -65,42 +65,43 @@ namespace DungeonKIT
 
         private void Awake()
         {
-            if (Instance != null)
+            if (Instance != null && Instance != this)
             {
                 Destroy(gameObject);
             }
             else
             {
                 Instance = this;
-            }
 
-            HP = new DoubleFloat(50f, 50f);
-            Armor = 0.5f;
-            Agility = 0.2f;
-            Damage = 3f;
-            Points = 0;
-            Level = 1;
-            ExperiencePoints = 0;
+                // Check if there is a save
+                if (SaveManager.HasSave())
+                {
+                    SaveManager.Load(); // Load the saved values from PlayerPrefs
+                }
+                else
+                {
+                    // No save found, use default values
+                    HP = new DoubleFloat(50f, 50f);
+                    Armor = 0.5f;
+                    Agility = 0.2f;
+                    Damage = 3f;
+                    Points = 0;
+                    Level = 1;
+                    ExperiencePoints = 0;
 
-            if (SaveManager.HasSave())
-            {
-                SaveManager.Load();
-            }
-            else
-            {
-                print("else");
-                // No save found, create a new PlayerStats instance
-                GameObject playerStatsObject = new GameObject("PlayerStats");
-                PlayerStats playerStatsInstance = playerStatsObject.AddComponent<PlayerStats>();
+                    // Create a new PlayerStats instance with default values
+                    GameObject playerStatsObject = new GameObject("PlayerStats");
+                    PlayerStats playerStatsInstance = playerStatsObject.AddComponent<PlayerStats>();
 
-                // Set the instance as the newly created PlayerStats
-                PlayerStats.Instance = playerStatsInstance;
+                    // Set the instance as the newly created PlayerStats
+                    PlayerStats.Instance = playerStatsInstance;
 
-                // Mark the PlayerStats GameObject as not to be destroyed on scene changes
-                DontDestroyOnLoad(playerStatsObject);
+                    // Mark the PlayerStats GameObject as not to be destroyed on scene changes
+                    DontDestroyOnLoad(playerStatsObject);
 
-                // Initialize PlayerStats from the current player
-                PlayerStats.Instance.InitializeFromPlayer(this);
+                    // Initialize PlayerStats from the current player
+                    PlayerStats.Instance.InitializeFromPlayer(this);
+                }
             }
         }
     }
