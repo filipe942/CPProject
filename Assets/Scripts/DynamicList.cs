@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,10 +17,13 @@ public class DynamicList : MonoBehaviour
 
     private void Start()
     {
+        
         LoadAllTodos();
 
         // Get the loaded ToDo list
         List<ToDoItem.ToDo> todoList = GetLoadedToDoList();
+
+        todoList = FilterExpiredToDos(todoList);
 
         // Iterate over the length of the list
         for (int i = 0; i < todoList.Count; i++)
@@ -38,7 +44,52 @@ public class DynamicList : MonoBehaviour
     void Update()
     {        
         List<ToDoItem.ToDo> todoList = GetLoadedToDoList();
+        todoList = FilterExpiredToDos(todoList);
         ToDoCount.text = todoList.Count.ToString();
+    }
+
+    private List<ToDoItem.ToDo> FilterExpiredToDos(List<ToDoItem.ToDo> todoList)
+    {
+        DateTime currentDate = DateTime.Now;
+
+        // Use RemoveAll to filter and remove expired ToDo items in a single step
+        todoList.RemoveAll(todo =>
+        {
+            if (DateTime.TryParseExact(todo.endDate.Replace("\u200B", "").Trim(), "yyyy-MM-dd", null, DateTimeStyles.None, out DateTime parsedDate))
+            {
+                return parsedDate < currentDate;
+            }
+            else
+            {
+                // Handle invalid date format
+                Debug.LogError($"Invalid date format for ToDo item: {todo.endDate}");
+                return true; // Remove items with invalid date format
+            }
+        });
+
+        // Save the updated ToDo list
+        SaveToDoList(todoList);
+
+        return todoList;
+    }
+
+    private void SaveToDoList(List<ToDoItem.ToDo> todoList)
+    {
+        string filePath = GetToDoListFilePath();
+
+        try
+        {
+            // Serialize and save the ToDo list
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream fileStream = File.Create(filePath))
+            {
+                formatter.Serialize(fileStream, todoList);
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Error saving ToDo list: {e.Message}");
+        }
     }
 
     private void LoadAllTodos()

@@ -12,6 +12,8 @@ namespace DungeonKIT
         [SerializeField] Text pointsText;
         [SerializeField] Text PlayerLvlPage;
         [SerializeField] Text PlayerLvlSideBar;
+        [SerializeField] Text DungeonLVL;
+        [SerializeField] Text DungeonLVLBut;
 
         private PlayerStats playerStatsReference;
 
@@ -32,21 +34,49 @@ namespace DungeonKIT
         // Update the UI based on PlayerStats values
         public void UpdateUI()
         {
+            if(PlayerLvlPage) { 
             PlayerLvlPage.text = playerStatsReference.Level.ToString();
+            }
+            if(PlayerLvlSideBar)
+            {
+                PlayerLvlSideBar.text = playerStatsReference.Level.ToString();
+            }
 
-            PlayerLvlSideBar.text = playerStatsReference.Level.ToString();
-
-            hpText.text = playerStatsReference.HP.max.ToString();
+           if(hpText)
+            {
+                hpText.text = playerStatsReference.HP.max.ToString();
+            }
             
-            strText.text = playerStatsReference.Damage.ToString();
+            if(strText)
+            {
+                strText.text = playerStatsReference.Damage.ToString();
+            }
 
-            float agility = (playerStatsReference.Agility *100f);
-            aglText.text = agility.ToString();
+            if (aglText)
+            {
+                float agility = playerStatsReference.Agility*100f;
+                aglText.text = agility.ToString();
+            }
 
-            float armor = playerStatsReference.Armor*100f;
-            defText.text = armor.ToString();
+            if (defText)
+            {
+                float armor = playerStatsReference.Armor * 100f;
+                defText.text = armor.ToString();
+            }
 
-            pointsText.text = playerStatsReference.Points.ToString();
+            if (pointsText) 
+            {
+                pointsText.text = playerStatsReference.Points.ToString();
+            }
+            if (DungeonLVL)
+            {
+                DungeonLVL.text = playerStatsReference.DungeonLevel.ToString();
+            }
+            if (DungeonLVLBut)
+            {
+                DungeonLVLBut.text = "Play LVL " + playerStatsReference.DungeonLevel.ToString();
+            }
+            
                 
             // Update other UI elements as needed
         }

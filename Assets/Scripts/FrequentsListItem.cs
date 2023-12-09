@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using DungeonKIT;
 
 public class FrequentsListItem : MonoBehaviour
 {
@@ -13,56 +14,139 @@ public class FrequentsListItem : MonoBehaviour
 
     private List<FrequentsItem.Frequents> frequentsList;
 
+    private const float SecondsInADay = 86400f;
+    private const float SecondsInAWeek = 604800f; 
+    private const float SecondsInAMonth = 2592000f;
+
+    private const string FirstSelectionKeyPrefix = "FirstSelection_";
+
     public void SetFrequentsItemData(string title, string description, string difficulty, string frequency)
     {
         titleText.text = title;
         descriptionText.text = description;
-        difficultyText.text = difficulty;
-        frequencyText.text = frequency;
+        difficultyText.text = frequency;
+        frequencyText.text = difficulty;
+    }
+
+    public void DeleteFrequents()
+    {
+        List<FrequentsItem.Frequents> frequentsList = GetFrequentsList();
+
+        int index = frequentsList.FindIndex(frequents =>
+            frequents.title == titleText.text &&
+            frequents.description == descriptionText.text &&
+            frequents.difficulty == difficultyText.text &&
+            frequents.frequency == frequencyText.text
+        );
+
+        if (index != -1)
+        {
+            frequentsList.RemoveAt(index);
+
+            SaveFrequentsList(frequentsList);
+        }
+
+        Destroy(gameObject);
     }
 
     public void DeleteFrequentsItem()
     {
-        List<FrequentsItem.Frequents> frequentsList = GetFrequentsList();
-
-        int index = frequentsList.FindIndex(frequents =>
-            frequents.title == titleText.text &&
-            frequents.description == descriptionText.text &&
-            frequents.difficulty == difficultyText.text &&
-            frequents.frequency == frequencyText.text
-        );
-
-        if (index != -1)
+        if (CanSelectItem())
         {
-            frequentsList.RemoveAt(index);
+            List<FrequentsItem.Frequents> frequentsList = GetFrequentsList();
 
-            SaveFrequentsList(frequentsList);
+            int index = frequentsList.FindIndex(frequents =>
+                frequents.title == titleText.text &&
+                frequents.description == descriptionText.text &&
+                frequents.difficulty == difficultyText.text &&
+                frequents.frequency == frequencyText.text
+            );
+
+            if (index != -1)
+            {
+                UpdateLastSelectionTimestamp(titleText.text);
+            }
         }
-
-        Destroy(gameObject);
+        else
+        {
+            Debug.Log("Cannot select item. Selection limit reached.");
+        }
     }
 
     public void DeleteFrequentsItemWithPoints()
     {
-        List<FrequentsItem.Frequents> frequentsList = GetFrequentsList();
-        print(frequentsList.Count);
-
-        int index = frequentsList.FindIndex(frequents =>
-            frequents.title == titleText.text &&
-            frequents.description == descriptionText.text &&
-            frequents.difficulty == difficultyText.text &&
-            frequents.frequency == frequencyText.text
-        );
-
-        if (index != -1)
+        if (CanSelectItem())
         {
-            int xpPoints = CalculateXpPoints(difficultyText.text);
-            Debug.Log($"Gained {xpPoints} XP points for completing task with difficulty: {difficultyText.text}");
-            frequentsList.RemoveAt(index);
-            SaveFrequentsList(frequentsList);
+            List<FrequentsItem.Frequents> frequentsList = GetFrequentsList();
+
+            int index = frequentsList.FindIndex(frequents =>
+                frequents.title == titleText.text &&
+                frequents.description == descriptionText.text &&
+                frequents.difficulty == difficultyText.text &&
+                frequents.frequency == frequencyText.text
+            );
+
+            if (index != -1)
+            {
+                int xpPoints = CalculateXpPoints(difficultyText.text);
+                Debug.Log($"Gained {xpPoints} XP points for completing task with difficulty: {difficultyText.text}");
+                PlayerStats.Instance.GainXP(xpPoints);
+                UpdateLastSelectionTimestamp(titleText.text);
+            }
+        }
+        else
+        {
+            Debug.Log("Cannot select item. Selection limit reached.");
+        }
+    }
+
+    private bool CanSelectItem()
+    {
+        float lastSelectionTimestamp = PlayerPrefs.GetFloat(GetLastSelectionKey(titleText.text), 0f);
+        float currentTime = Time.time;
+
+        float selectionLimit = 0f;
+
+        switch (frequencyText.text)
+        {
+            case "Daily":
+                selectionLimit = SecondsInADay;
+                break;
+            case "Weekly":
+                selectionLimit = SecondsInAWeek;
+                break;
+            case "Monthly":
+                selectionLimit = SecondsInAMonth;
+                break;
+            default:
+                Debug.LogError($"Unsupported frequency: {frequencyText.text}");
+                return false;
         }
 
-        Destroy(gameObject);
+        if (!PlayerPrefs.HasKey(GetFirstSelectionKey(titleText.text)))
+        {
+            PlayerPrefs.SetInt(GetFirstSelectionKey(titleText.text), 1);
+            PlayerPrefs.Save();
+            return true;
+        }
+
+        return currentTime > lastSelectionTimestamp + selectionLimit;
+    }
+
+    private string GetFirstSelectionKey(string title)
+    {
+        return $"{FirstSelectionKeyPrefix}{title.Replace(" ", "")}";
+    }
+
+    private void UpdateLastSelectionTimestamp(string title)
+    {
+        PlayerPrefs.SetFloat(GetLastSelectionKey(title), Time.time);
+        PlayerPrefs.Save();
+    }
+
+    private string GetLastSelectionKey(string title)
+    {
+        return $"LastFrequentsSelection_{title.Replace(" ", "")}";
     }
 
     private int CalculateXpPoints(string difficulty)

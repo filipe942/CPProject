@@ -63,6 +63,13 @@ namespace DungeonKIT
             set { _experiencePoints = value; }
         }
 
+        [SerializeField] private int _dungeonLevel;
+        public int DungeonLevel
+        {
+            get { return _dungeonLevel; }
+            set { _dungeonLevel = value; }
+        }
+
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -88,6 +95,7 @@ namespace DungeonKIT
                     Points = 0;
                     Level = 1;
                     ExperiencePoints = 0;
+                    DungeonLevel = 1;
 
                     // Create a new PlayerStats instance with default values
                     GameObject playerStatsObject = new GameObject("PlayerStats");

@@ -21,6 +21,7 @@ public class FrequentsItem : MonoBehaviour
     public Button weeklyButton;
     public Button monthlyButton;
     private Button selectedButton;
+    private Button selectedButton2;
 
     [System.Serializable]
     public class Frequents
@@ -136,19 +137,19 @@ public class FrequentsItem : MonoBehaviour
     private void UpdateButtonSelection2(Button newSelection)
     {
         // Unhighlight the previously selected button
-        if (selectedButton != null)
+        if (selectedButton2 != null)
         {
-            ColorBlock previousColors = selectedButton.colors;
+            ColorBlock previousColors = selectedButton2.colors;
             previousColors.normalColor = Color.white;
-            selectedButton.colors = previousColors;
-            LayoutRebuilder.ForceRebuildLayoutImmediate(selectedButton.transform as RectTransform);
+            selectedButton2.colors = previousColors;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(selectedButton2.transform as RectTransform);
         }
 
         // Highlight the newly selected button
-        selectedButton = newSelection;
-        ColorBlock newColors = selectedButton.colors;
+        selectedButton2 = newSelection;
+        ColorBlock newColors = selectedButton2.colors;
         newColors.normalColor = Color.red;
-        selectedButton.colors = newColors;
+        selectedButton2.colors = newColors;
 
         Canvas.ForceUpdateCanvases();
     }

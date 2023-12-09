@@ -71,6 +71,8 @@ namespace DungeonKIT
         void GoToNextLevel()
         {
             int lvlID = ScenesManager.Instance.levelID+1; //Level id + 1
+            PlayerStats.GetInstance().DungeonLevel++;
+            SaveManager.Save();
             ScenesManager.Instance.levelID++;
             ScenesManager.Instance.LoadLoadingScene("Lvl_" + lvlID); //Load next level
         }

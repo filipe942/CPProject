@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using DungeonKIT;
 
 public class HabitListItem : MonoBehaviour
 {
@@ -11,99 +12,159 @@ public class HabitListItem : MonoBehaviour
     public Text difficultyText;
     public Text typeText;
 
+    private const float SecondsInADay = 86400f;
+
     private List<HabitItem.Habit> habitList;
 
     public void SetHabitItemData(string title, string description, string difficulty, string type)
     {
         titleText.text = title;
         descriptionText.text = description;
-        difficultyText.text = difficulty;
-        typeText.text = type;
+        difficultyText.text = type;
+        typeText.text = difficulty;
+    }
+
+    public void DeleteHabit()
+    {
+        List<HabitItem.Habit> habitList = GetHabitList();
+
+
+        int index = habitList.FindIndex(habit =>
+        {
+            return habit.title == titleText.text &&
+                   habit.description == descriptionText.text &&
+                   habit.difficulty == difficultyText.text &&
+                   habit.type == typeText.text;
+        });
+
+        if (index != -1)
+        {
+            habitList.RemoveAt(index);
+            SaveHabitList(habitList);
+            Destroy(gameObject);
+        }
+        else
+        {
+            print("Habit not found");
+        }
     }
 
     public void DeleteHabitItem()
     {
-        List<HabitItem.Habit> habitList = GetHabitList();
-
-        int index = habitList.FindIndex(habit =>
-            habit.title == titleText.text &&
-            habit.description == descriptionText.text &&
-            habit.difficulty == difficultyText.text &&
-            habit.type == typeText.text
-        );
-
-        if (index != -1)
+        if (CanExecuteAction())
         {
-            habitList.RemoveAt(index);
+            List<HabitItem.Habit> habitList = GetHabitList();
 
-            SaveHabitList(habitList);
+            int index = habitList.FindIndex(habit =>
+                habit.title == titleText.text &&
+                habit.description == descriptionText.text &&
+                habit.difficulty == difficultyText.text &&
+                habit.type == typeText.text
+            );
+
+            if (index != -1)
+            {
+                int xpPoints = CalculateXpPoints(difficultyText.text, typeText.text, false);
+                Debug.Log($"Gained {xpPoints} XP points for completing task with difficulty: {difficultyText.text}");
+                PlayerStats.Instance.GainXP(xpPoints);
+                UpdateLastExecutionTimestamp();
+            }
         }
-
-        Destroy(gameObject);
+        else
+        {
+            Debug.Log("Cannot execute action. Daily limit reached.");
+        }
     }
 
     public void DeleteHabitItemWithPoints()
     {
-        List<HabitItem.Habit> habitList = GetHabitList();
-        print(habitList.Count);
-
-        int index = habitList.FindIndex(habit =>
-            habit.title == titleText.text &&
-            habit.description == descriptionText.text &&
-            habit.difficulty == difficultyText.text &&
-            habit.type == typeText.text
-        );
-
-        if (index != -1)
+        if (CanExecuteAction())
         {
-            int xpPoints = CalculateXpPoints(difficultyText.text, typeText.text);
-            Debug.Log($"Gained {xpPoints} XP points for completing task with difficulty: {difficultyText.text}");
-            habitList.RemoveAt(index);
-            SaveHabitList(habitList);
-        }
+            print("entrou");
+            List<HabitItem.Habit> habitList = GetHabitList();
 
-        Destroy(gameObject);
-    }
+            int index = habitList.FindIndex(habit =>
+                habit.title == titleText.text &&
+                habit.description == descriptionText.text &&
+                habit.difficulty == difficultyText.text &&
+                habit.type == typeText.text
+            );
 
-    private int CalculateXpPoints(string difficulty, string type)
-    {
-        if (type == "Positive")
-        {
-            switch (difficulty)
+            if (index != -1)
             {
-                case "Trivial":
-                    return 5;
-                case "Easy":
-                    return 10;
-                case "Medium":
-                    return 20;
-                case "Hard":
-                    return 30;
-                default:
-                    return 0;
+                int xpPoints = CalculateXpPoints(difficultyText.text, typeText.text, true);
+                Debug.Log($"Gained {xpPoints} XP points for completing task with difficulty: {difficultyText.text}");
+                PlayerStats.Instance.GainXP(xpPoints);
+                UpdateLastExecutionTimestamp();
             }
-        }
-        else if (type == "Negative")
-        {
-           switch (difficulty)
-            {
-                case "Trivial":
-                    return -5;
-                case "Easy":
-                    return -10;
-                case "Medium":
-                    return -20;
-                case "Hard":
-                    return -30;
-                default:
-                    return 0;
-            } 
         }
         else
         {
-            // Handle other cases for 'type'
-            return 0; // or another appropriate default value
+            Debug.Log("Cannot execute action. Daily limit reached.");
         }
+    }
+
+    private bool CanExecuteAction()
+    {
+        string firstExecutionKey = GetFirstExecutionKey();
+        print(firstExecutionKey);
+        if (!PlayerPrefs.HasKey(firstExecutionKey))
+        {
+            // First execution, allow and set the flag
+            PlayerPrefs.SetInt(firstExecutionKey, 1);
+            PlayerPrefs.Save();
+            return true;
+        }
+
+        string lastExecutionKey = GetLastExecutionKey();
+        float lastExecutionTimestamp = PlayerPrefs.GetFloat(lastExecutionKey, 0f);
+        float currentTime = Time.time;
+
+        return currentTime > lastExecutionTimestamp + SecondsInADay;
+    }
+
+    private void UpdateLastExecutionTimestamp()
+    {
+        string lastExecutionKey = GetLastExecutionKey();
+        PlayerPrefs.SetFloat(lastExecutionKey, Time.time);
+        PlayerPrefs.Save();
+    }
+    private string GetFirstExecutionKey()
+    {
+        return $"FirstHabitExecution_{titleText.text.Replace(" ", "")}";
+    }
+    private string GetLastExecutionKey()
+    {
+        return "LastHabitExecution_" + titleText.text.Replace(" ", ""); 
+    }
+
+    private int CalculateXpPoints(string difficulty, string type, bool did)
+    {
+        int basePoints = 0;
+
+        switch (difficulty)
+        {
+            case "Trivial":
+                basePoints = 5;
+                break;
+            case "Easy":
+                basePoints = 10;
+                break;
+            case "Medium":
+                basePoints = 20;
+                break;
+            case "Hard":
+                basePoints = 30;
+                break;
+                // Handle other cases for 'difficulty'
+        }
+
+        if (type == "Negative")
+        {
+            basePoints = -basePoints;
+        }
+
+        return did ? basePoints : -basePoints;
     }
 
     private List<HabitItem.Habit> GetHabitList()

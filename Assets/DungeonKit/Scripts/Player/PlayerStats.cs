@@ -56,6 +56,13 @@ namespace DungeonKIT
             set { _doorKeys = value; }
         }
 
+        [SerializeField] private int _dungeonLevel;
+        public int DungeonLevel
+        {
+            get { return _dungeonLevel; }
+            set { _dungeonLevel = value; }
+        }
+
         [SerializeField] private int _level;
         public int Level
         {
@@ -129,6 +136,7 @@ namespace DungeonKIT
                 Points = player.Points;
                 Level = player.Level;
                 ExperiencePoints = player.ExperiencePoints;
+                DungeonLevel = player.DungeonLevel;
             }
 
         //Taking damage method
@@ -155,6 +163,10 @@ namespace DungeonKIT
         public void GainXP(int xp)
         {
             ExperiencePoints += xp;
+            if(ExperiencePoints < 0)
+            {
+                ExperiencePoints = 0;
+            }
             SaveManager.Save();
             // Check for level up
             while (ExperiencePoints >= CalculateXPToNextLevel())
@@ -168,15 +180,13 @@ namespace DungeonKIT
         private void LevelUp()
         {
             Level++;
-            XPPerLevel *= Level;
             Points++;
-
             SaveManager.Save();
         }
 
         private float CalculateXPToNextLevel()
         {
-            return XPPerLevel;
+            return XPPerLevel * Level;
         }
         //Death method
         void Death()
