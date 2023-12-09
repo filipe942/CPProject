@@ -5573,7 +5573,9 @@ MonoBehaviour:
   _armor: 0
   _agility: 0
   _damage: 0
-  _money: 0
+  _points: 0
+  _level: 0
+  _experiencePoints: 0
 --- !u!4 &1285549254
 Transform:
   m_ObjectHideFlags: 0
@@ -6714,6 +6716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2118993200}
   - component: {fileID: 2118993201}
+  - component: {fileID: 2118993202}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -6750,6 +6753,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuAnimatorManager: {fileID: 314833581}
   loadGameBtn: {fileID: 395445833}
+--- !u!114 &2118993202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118993199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e866e03956dfa21429997bcf75941450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StrText: 
+  DefText: 
+  AglText: 
+  PointsText: 
+  StrUpButton: {fileID: 0}
+  StrDownButton: {fileID: 0}
+  DefUpButton: {fileID: 0}
+  DefDownButton: {fileID: 0}
+  AglUpButton: {fileID: 0}
+  AglDownButton: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -28,15 +28,20 @@ namespace DungeonKIT
         public void UpdateUI()
         {
             PlayerLvlPage.text = playerStatsReference.Level.ToString();
+
             PlayerLvlSideBar.text = playerStatsReference.Level.ToString();
+
             hpText.text = playerStatsReference.HP.max.ToString();
+            
             strText.text = playerStatsReference.Damage.ToString();
+
             float agility = (playerStatsReference.Agility *100f);
             aglText.text = agility.ToString();
+
             float armor = playerStatsReference.Armor*100f;
             defText.text = armor.ToString();
+
             pointsText.text = playerStatsReference.Points.ToString();
-            
                 
             // Update other UI elements as needed
         }
