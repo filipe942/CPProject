@@ -114,6 +114,8 @@ namespace DungeonKIT
                 SaveManager.Load(); 
                 if (ScenesManager.Instance.continueGame)
                     SaveManager.Load();
+                
+                SaveManager.Save();
             }
         }
         public static PlayerStats GetInstance()

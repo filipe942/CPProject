@@ -87,6 +87,7 @@ namespace DungeonKIT
                 }
                 else
                 {
+                    print("aqui");
                     // No save found, use default values
                     HP = new DoubleFloat(50f, 50f);
                     Armor = 0.5f;
@@ -109,6 +110,7 @@ namespace DungeonKIT
 
                     // Initialize PlayerStats from the current player
                     PlayerStats.Instance.InitializeFromPlayer(this);
+                    SaveManager.Save();
                 }
             }
         }
