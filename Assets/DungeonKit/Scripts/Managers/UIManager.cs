@@ -101,9 +101,9 @@ namespace DungeonKIT
         //UI GameOver method
         public void GameOver()
         {
-            if (PlayerStats.GetInstance().DungeonLevel - 2 < 0)
+            if (PlayerStats.GetInstance().DungeonLevel - 2 < 1)
             {
-                PlayerStats.GetInstance().DungeonLevel = 0;
+                PlayerStats.GetInstance().DungeonLevel = 1;
             }
             else
             {

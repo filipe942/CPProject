@@ -15,7 +15,7 @@ namespace DungeonKIT
         {
             aiStats = GetComponent<AIStats>();
             aiStats.enemyHP = new DoubleFloat(20f, 20f); // HP do orc é definido aqui
-            aiStats.attackDamage=5f;
+            aiStats.attackDamage = 5f + (1.5f * PlayerStats.GetInstance().DungeonLevel);
             timeBtwAttacks = startTimeBtnAttacks; // Initialize the time between attacks
         }
 

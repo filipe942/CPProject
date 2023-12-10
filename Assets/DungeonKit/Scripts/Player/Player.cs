@@ -91,26 +91,14 @@ namespace DungeonKIT
                     // No save found, use default values
                     HP = new DoubleFloat(50f, 50f);
                     Armor = 0.5f;
-                    Agility = 0.2f;
+                    Agility = 1f;
                     Damage = 3f;
                     Points = 0;
                     Level = 1;
                     ExperiencePoints = 0;
                     DungeonLevel = 1;
 
-                    // Create a new PlayerStats instance with default values
-                    GameObject playerStatsObject = new GameObject("PlayerStats");
-                    PlayerStats playerStatsInstance = playerStatsObject.AddComponent<PlayerStats>();
-
-                    // Set the instance as the newly created PlayerStats
-                    PlayerStats.Instance = playerStatsInstance;
-
-                    // Mark the PlayerStats GameObject as not to be destroyed on scene changes
-                    DontDestroyOnLoad(playerStatsObject);
-
-                    // Initialize PlayerStats from the current player
-                    PlayerStats.Instance.InitializeFromPlayer(this);
-                    SaveManager.Save();
+                    SaveManager.FirstSave();
                 }
             }
         }

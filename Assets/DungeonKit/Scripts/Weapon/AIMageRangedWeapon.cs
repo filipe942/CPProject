@@ -14,9 +14,10 @@ namespace DungeonKIT
 
             if (collider.gameObject.tag == "Player") //if contact with player
             {
-                Damage(PlayerStats.Instance, 10f + (10f * PlayerStats.Instance.Armor )); //Player damaged
+                Damage(PlayerStats.Instance, 10f + (2f * PlayerStats.GetInstance().DungeonLevel)); //Player damaged
             }
         }
+
 
         //Damage method
         void Damage(PlayerStats player, float attackDamage)

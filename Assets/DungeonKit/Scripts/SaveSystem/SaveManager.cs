@@ -5,6 +5,21 @@ namespace DungeonKIT
 {
     public class SaveManager : MonoBehaviour
     {
+
+        public static void FirstSave()
+        {
+            PlayerPrefs.SetFloat("Saved_HP", Player.Instance.HP.max);
+            PlayerPrefs.SetFloat("Saved_Damage", Player.Instance.Damage);
+            PlayerPrefs.SetFloat("Saved_Armor", Player.Instance.Armor);
+            PlayerPrefs.SetFloat("Saved_Agility", Player.Instance.Agility);
+            PlayerPrefs.SetFloat("Saved_XP", Player.Instance.ExperiencePoints);
+            PlayerPrefs.SetInt("Saved_PlayerLevel", Player.Instance.Level);
+            PlayerPrefs.SetInt("Saved_Points", Player.Instance.Points);
+            PlayerPrefs.SetInt("Saved_DungeonLevel", Player.Instance.DungeonLevel);
+
+            PlayerPrefs.Save();
+        }
+
         public static void Save()
         {
             PlayerPrefs.SetFloat("Saved_HP", PlayerStats.Instance.HP.max);
