@@ -79,6 +79,7 @@ namespace DungeonKIT
                 PlayerStats.GetInstance().DungeonLevel++;
                 PlayerStats.GetInstance().GainXP(10);
                 SaveManager.Save();
+                SaveManager.SaveDungeonFloor("Lvl_Boss_" + bossLevel);
                 ScenesManager.Instance.LoadLoadingScene("Lvl_Boss_" + bossLevel); // Load boss level
 
             }
@@ -88,6 +89,7 @@ namespace DungeonKIT
                 PlayerStats.GetInstance().DungeonLevel++;
                 PlayerStats.GetInstance().GainXP(10);
                 SaveManager.Save();
+                SaveManager.SaveDungeonFloor("Lvl_" + randomLevelID);
                 ScenesManager.Instance.LoadLoadingScene("Lvl_" + randomLevelID); // Load next level
             }
         }

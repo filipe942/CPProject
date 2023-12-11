@@ -19,7 +19,7 @@ namespace DungeonKIT
         [Header("Components")]
 
         public GameObject HP_Manager; //HP prefab for spawn
-        public Text moneyText, keyText; //UI text
+        public Text moneyText, keyText, dungeonLVL; //UI text
         
 
         [Header("Screens GameObjects")]
@@ -69,12 +69,14 @@ namespace DungeonKIT
 
         }
 
+
         //Update ui method
         public void UpdateUI()
         {
             UpdateHP();
             //moneyText.text = playerStats.Money.ToString(); //Update ui money text
             keyText.text = playerStats.DoorKeys.Count.ToString();
+            
         }
 
         //Update hp method
@@ -101,6 +103,7 @@ namespace DungeonKIT
         //UI GameOver method
         public void GameOver()
         {
+
             if (PlayerStats.GetInstance().DungeonLevel - 2 < 1)
             {
                 PlayerStats.GetInstance().DungeonLevel = 1;
@@ -109,7 +112,23 @@ namespace DungeonKIT
             {
                 PlayerStats.GetInstance().DungeonLevel -= 2;
             }
-            SaveManager.Save();
+            SaveManager.SaveDungeonLVL(playerStats.DungeonLevel);
+            dungeonLVL.text = playerStats.DungeonLevel.ToString();
+
+            int randomLevelID;
+            // Check if the level is a multiple of 10
+            if (PlayerStats.GetInstance().DungeonLevel % 2 == 0 && PlayerStats.GetInstance().DungeonLevel != 0)
+            {
+                int bossLevel = UnityEngine.Random.Range(1, 3); // Randomly select 1 or 2 for the boss level
+                SaveManager.SaveDungeonFloor("Lvl_Boss_" + bossLevel); // Save boss level
+
+            }
+            else
+            {
+                randomLevelID = UnityEngine.Random.Range(0, 4);
+                SaveManager.SaveDungeonFloor("Lvl_" + randomLevelID);     
+            }
+            
             gameoverGO.SetActive(true); //gameover screen enable
         }
 
@@ -126,7 +145,7 @@ namespace DungeonKIT
         //Load main menu method
         public void LoadMainMenu()
         {
-            ScenesManager.Instance.LoadLoadingScene("MainMenu"); //Load main menu scene
+            ScenesManager.Instance.LoadLoadingScene("DungeonsScreen"); //Load main menu scene
         }
 
 

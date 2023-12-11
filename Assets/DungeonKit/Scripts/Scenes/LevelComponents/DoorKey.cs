@@ -12,6 +12,7 @@ namespace DungeonKIT
         public void OnPickedUp()
         {
             PlayerStats.Instance.DoorKeys.Add(keyID, true);
+            Destroy(gameObject);
 
             UIManager.Instance.UpdateUI(); //Update UI
         }

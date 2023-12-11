@@ -23,6 +23,7 @@ namespace DungeonKIT
         private void Start()
         {
             //Find next level door
+            PlayerStats.GetInstance().HP.current = PlayerStats.GetInstance().HP.max;
             nextLevelDoor = GameObject.Find("NextLevelDoor").GetComponent<NextLevelDoor>();
         }
 

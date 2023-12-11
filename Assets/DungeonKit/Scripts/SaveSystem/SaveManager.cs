@@ -32,8 +32,16 @@ namespace DungeonKIT
             PlayerPrefs.SetInt("Saved_DungeonLevel", PlayerStats.Instance.DungeonLevel);
             //PlayerPrefs.SetInt("Saved_Money", PlayerStats.Instance.Money);
 
-            PlayerPrefs.SetString("Saved_Level", SceneManager.GetActiveScene().name);
-
+            PlayerPrefs.Save();
+        }
+        public static void SaveDungeonLVL(int Lvl)
+        {
+            PlayerPrefs.SetInt("Saved_DungeonLevel", Lvl);
+            PlayerPrefs.Save();
+        }
+        public static void SaveDungeonFloor(string LvlName)
+        {
+            PlayerPrefs.SetString("Saved_Level", LvlName);
             PlayerPrefs.Save();
         }
 

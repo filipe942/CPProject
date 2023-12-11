@@ -18,10 +18,7 @@ namespace DungeonKIT
         {
             if (PlayerPrefs.GetString("Saved_Level") != "")
             {
-                if(loadGameBtn != null)
-                {
-                    loadGameBtn.SetActive(true);
-                }
+                
             }
                 
 
@@ -30,9 +27,12 @@ namespace DungeonKIT
 
         private void Update()
         {
-            if (!isAnyKeyDown && Input.anyKeyDown) //if any key down
-            {
-                SplashScreenClose(); //Splash screen disable
+            if (loadGameBtn) {
+            
+                if (!isAnyKeyDown && Input.anyKeyDown) //if any key down
+                {
+                    SplashScreenClose(); //Splash screen disable
+                }
             }
         }
         //Splash screen disable method
@@ -94,8 +94,18 @@ namespace DungeonKIT
 
         public void LoadGame()
         {
-            ScenesManager.Instance.continueGame = true;
-            ScenesManager.Instance.LoadLoadingScene(PlayerPrefs.GetString("Saved_Level"));
+            if (PlayerPrefs.GetString("Saved_Level") != "")
+            {
+                ScenesManager.Instance.continueGame = true;
+                print(PlayerPrefs.GetString("Saved_Level"));
+                ScenesManager.Instance.LoadLoadingScene(PlayerPrefs.GetString("Saved_Level"));
+            }
+            else
+            {
+                SaveManager.SaveDungeonFloor("Lvl_0");
+                ScenesManager.Instance.LoadLoadingScene("Lvl_0");
+            }
+                
         }
 
         //Game quit

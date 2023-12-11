@@ -183,6 +183,9 @@ namespace DungeonKIT
         {
             Level++;
             Points++;
+            HP.max += 20;
+            HP.current = HP.max;
+            
             SaveManager.Save();
         }
 
@@ -194,7 +197,7 @@ namespace DungeonKIT
         void Death()
         {
             GameManager.Instance.GameOver(); //Game over in gamemanager
-            Destroy(gameObject); //Destroy this GameObject
+            
         }
 
         IEnumerator timeDamage()
