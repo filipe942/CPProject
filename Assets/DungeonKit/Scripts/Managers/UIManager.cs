@@ -19,7 +19,7 @@ namespace DungeonKIT
         [Header("Components")]
 
         public GameObject HP_Manager; //HP prefab for spawn
-        public Text moneyText, keyText, dungeonLVL; //UI text
+        public Text moneyText, keyText, deadDungeonLVL, dungeonLvl; //UI text
         
 
         [Header("Screens GameObjects")]
@@ -76,6 +76,7 @@ namespace DungeonKIT
             UpdateHP();
             //moneyText.text = playerStats.Money.ToString(); //Update ui money text
             keyText.text = playerStats.DoorKeys.Count.ToString();
+            dungeonLvl.text = playerStats.DungeonLevel.ToString();
             
         }
 
@@ -113,7 +114,7 @@ namespace DungeonKIT
                 PlayerStats.GetInstance().DungeonLevel -= 2;
             }
             SaveManager.SaveDungeonLVL(playerStats.DungeonLevel);
-            dungeonLVL.text = playerStats.DungeonLevel.ToString();
+            deadDungeonLVL.text = playerStats.DungeonLevel.ToString();
 
             int randomLevelID;
             // Check if the level is a multiple of 10
