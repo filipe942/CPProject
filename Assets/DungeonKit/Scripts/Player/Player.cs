@@ -90,9 +90,9 @@ namespace DungeonKIT
                     print("aqui");
                     // No save found, use default values
                     HP = new DoubleFloat(50f, 50f);
-                    Armor = 0.5f;
-                    Agility = 1f;
-                    Damage = 3f;
+                    Armor = 0.4f;
+                    Agility = 0.9f;
+                    Damage = 2f;
                     Points = 0;
                     Level = 1;
                     ExperiencePoints = 0;

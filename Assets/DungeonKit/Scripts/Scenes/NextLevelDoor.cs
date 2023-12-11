@@ -73,7 +73,7 @@ namespace DungeonKIT
             
             int randomLevelID;
             // Check if the level is a multiple of 10
-            if (PlayerStats.GetInstance().DungeonLevel % 2 == 0 && PlayerStats.GetInstance().DungeonLevel != 0)
+            if (PlayerStats.GetInstance().DungeonLevel % 10 == 0 && PlayerStats.GetInstance().DungeonLevel != 0)
             {
                 int bossLevel = UnityEngine.Random.Range(1, 3); // Randomly select 1 or 2 for the boss level
                 PlayerStats.GetInstance().DungeonLevel++;
