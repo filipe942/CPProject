@@ -48,7 +48,7 @@ namespace DungeonKIT
         public static bool HasSave()
         {
             // Check if there is a save by looking at a specific key or file
-            return PlayerPrefs.GetInt("Saved_PlayerLevel") > 1;
+            return PlayerPrefs.GetInt("Saved_PlayerLevel") > 0;
         }
 
         public static void Load()
@@ -65,6 +65,10 @@ namespace DungeonKIT
                 Player.Instance.DungeonLevel = PlayerPrefs.GetInt("Saved_DungeonLevel");
                 //PlayerStats.Instance.Money = PlayerPrefs.GetInt("Saved_Money");
             }
+        }
+        private void OnApplicationQuit()
+        {
+            Save();
         }
 
 
