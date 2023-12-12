@@ -24,6 +24,7 @@ namespace DungeonKIT
             aiStats.enemyHP= new DoubleFloat(80f, 80f); //HP do mago é definido aqui
             player = GameObject.FindGameObjectWithTag("Player");
             aiController = GetComponent<AIController>();
+            aiStats.attackSpeed= 0.05f + (0.01f*PlayerStats.GetInstance().DungeonLevel);
         }
 
         private void Update()
@@ -51,6 +52,9 @@ namespace DungeonKIT
         //AttackByRate method
         void AttackByRate()
         {
+            if(aiStats.attackSpeed>1f){
+                aiStats.attackSpeed=1f;
+            }
             if (timeBtwShots <= 0)
             {
                 if (attackCounter == 9) // Check if it's the tenth attack
@@ -65,7 +69,7 @@ namespace DungeonKIT
                 }
 
                 // A velocidade dos ataques do mago é definido aqui.
-                timeBtwShots = 1 - (aiStats.attackSpeed * 0f); // Set time to start again. 
+                timeBtwShots = 1-(aiStats.attackSpeed*0.50f); // Set time to start again. 
             }
             else
             {

@@ -22,6 +22,7 @@ namespace DungeonKIT
             aiStats = GetComponent<AIStats>(); 
             aiStats.enemyHP= new DoubleFloat(1500f, 1500f); //HP do orc boss é definido aqui
             aiStats.attackDamage = 20f + (1.5f * PlayerStats.GetInstance().DungeonLevel);
+            aiStats.attackSpeed= 0.10f + (0.01f*PlayerStats.GetInstance().DungeonLevel);
             //aiStats.onDeath += Death; //Adds to the event variable in the parent class
         }
 
@@ -61,6 +62,10 @@ namespace DungeonKIT
         //AttackByRate method
         void AttackByRate()
         {
+             if (aiStats.attackSpeed>1.50f){
+                aiStats.attackSpeed=1.50f;
+            }
+
             if (timeBtwShots <= 0)
             {
                 Attack(); //Jump attack

@@ -62,6 +62,7 @@ namespace DungeonKIT
 #endif
             dialogManager = GetComponent<DialogManager>();
             PlayerStats.GetInstance().DoorKeys.Clear();
+            PlayerStats.GetInstance().isDead=false;
 
             playerStats = PlayerStats.Instance; //Set playerstats in static object of PlayerStats
             healthAmount= playerStats.HP.max;

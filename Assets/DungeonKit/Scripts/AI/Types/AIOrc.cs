@@ -17,6 +17,7 @@ namespace DungeonKIT
             aiStats.enemyHP = new DoubleFloat(100f, 100f); // HP do orc é definido aqui
             aiStats.attackDamage = 5f + (1.5f * PlayerStats.GetInstance().DungeonLevel);
             timeBtwAttacks = startTimeBtnAttacks; // Initialize the time between attacks
+            aiStats.attackSpeed= 0.45f + (0.01f*PlayerStats.GetInstance().DungeonLevel);
         }
 
         // If player stays in trigger
@@ -31,6 +32,10 @@ namespace DungeonKIT
         // Method to handle attacks based on a rate
         void AttackByRate()
         {
+            if(aiStats.attackSpeed>1.90f){
+                aiStats.attackSpeed=1.90f;
+            }
+
             if (timeBtwAttacks <= 0)
             {
                 MeleeAttack(player, aiStats.attackDamage); // Call your MeleeAttack method with appropriate parameters

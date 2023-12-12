@@ -11,12 +11,14 @@ namespace DungeonKIT
         private float timeBtwAttacks; // Time between orc attacks
         public float startTimeBtnAttacks = 1.0f; // Initial time between orc attacks
 
+
         private void Start()
         {
             aiStats = GetComponent<AIStats>();
             aiStats.enemyHP = new DoubleFloat(150f, 150f); // HP do orc é definido aqui
             aiStats.attackDamage = 15f + (1.5f * PlayerStats.GetInstance().DungeonLevel);
             timeBtwAttacks = startTimeBtnAttacks; // Initialize the time between attacks
+            aiStats.attackSpeed= 0.45f + (0.01f*PlayerStats.GetInstance().DungeonLevel);
         }
 
 
@@ -32,12 +34,16 @@ namespace DungeonKIT
         // Method to handle attacks based on a rate
         void AttackByRate()
         {
+            if(aiStats.attackSpeed>1.90f){
+                aiStats.attackSpeed=1.90f;
+            }
+
             if (timeBtwAttacks <= 0)
             {
                 MeleeAttack(player, aiStats.attackDamage); // Call your MeleeAttack method with appropriate parameters
 
                 // Velocidade dos ataques do orc é definido aqui
-                timeBtwAttacks = 1-(aiStats.attackSpeed*0.99f); // Set time to start again
+                timeBtwAttacks = 1-(aiStats.attackSpeed*0.50f); // Set time to start again
             }
             else
             {

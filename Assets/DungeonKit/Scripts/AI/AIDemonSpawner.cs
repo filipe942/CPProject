@@ -3,8 +3,8 @@ using UnityEngine;
 public class AIDemonSpawner : MonoBehaviour
 {
     public GameObject[] AIPrefabs;
-    public float minSpawnInterval = 40f;
-    public float maxSpawnInterval = 45f;
+    public float minSpawnInterval = 55f;
+    public float maxSpawnInterval = 60f;
 
     private bool canSpawn = true;
 

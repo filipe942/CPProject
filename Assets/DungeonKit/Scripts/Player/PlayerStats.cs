@@ -77,6 +77,12 @@ namespace DungeonKIT
             set { _experiencePoints = value; }
         }
 
+        [SerializeField] private bool _isDead;
+        public bool isDead{
+            get {return _isDead;}
+            set {_isDead=value;}
+        }
+
         [Header("Parameters")]
         public float timeToDamage; //Time for pause between AI damage
         bool isDamaged;
@@ -156,8 +162,9 @@ namespace DungeonKIT
 
                 AudioManager.Instance.Play(audioSource, AudioManager.Instance.playerDamage, false); //play damage sound
 
-                if (HP.current <= 0) //If hp < 0
+                if (HP.current <= 0 && !isDead) //If hp < 0
                 {
+                    isDead=true;
                     Death(); //Lose 
                 }
             }
