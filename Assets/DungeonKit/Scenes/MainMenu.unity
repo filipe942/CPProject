@@ -6540,7 +6540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuAnimatorManager: {fileID: 314833581}
-  loadGameBtn: {fileID: 0}
+  loadGameBtn: {fileID: 1035123416}
 --- !u!114 &2118993202
 MonoBehaviour:
   m_ObjectHideFlags: 0

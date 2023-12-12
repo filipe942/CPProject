@@ -66,6 +66,7 @@ namespace DungeonKIT
 
             playerStats = PlayerStats.Instance; //Set playerstats in static object of PlayerStats
             healthAmount= playerStats.HP.max;
+            SaveManager.Save();
             UpdateUI(); //UpdateUI
 
         }
@@ -116,7 +117,7 @@ namespace DungeonKIT
             }
             SaveManager.SaveDungeonLVL(playerStats.DungeonLevel);
             deadDungeonLVL.text = playerStats.DungeonLevel.ToString();
-
+            SaveManager.Save();
             int randomLevelID;
             // Check if the level is a multiple of 10
             if (PlayerStats.GetInstance().DungeonLevel % 10 == 0 && PlayerStats.GetInstance().DungeonLevel != 0)
@@ -135,13 +136,13 @@ namespace DungeonKIT
         }
 
         public void LevelWon(){
-            levelWonGO.SetActive(true);
             AudioManager.Instance.Play(PlayerStats.Instance.audioSource, AudioManager.Instance.openNextLvlDoor, false);
+            levelWonGO.SetActive(true);
         }
 
         public void LevelBossWon(){
-            levelWonBossGO.SetActive(true);
             AudioManager.Instance.Play(PlayerStats.Instance.audioSource, AudioManager.Instance.openNextLvlDoor, false);
+            levelWonBossGO.SetActive(true);
         }
 
         //Load main menu method

@@ -20,9 +20,10 @@ namespace DungeonKIT
             {
                 
             }
-                
 
-            AudioManager.Instance.PlayMusic(AudioManager.Instance.music);
+            if(loadGameBtn){
+                AudioManager.Instance.PlayMusic(AudioManager.Instance.music);
+            }
         }
 
         private void Update()
