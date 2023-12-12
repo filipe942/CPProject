@@ -49,47 +49,47 @@ namespace DungeonKIT
 
         public void Tasks()
         {
-            ScenesManager.Instance.LoadLoadingScene("TaskMenuTodos");
+            ScenesManager.Instance.LoadSceneWithoutLoading("TaskMenuTodos");
         }
         
         public void Daily()
         {
-            ScenesManager.Instance.LoadLoadingScene("TaskMenuFrequents");
+            ScenesManager.Instance.LoadSceneWithoutLoading("TaskMenuFrequents");
         }
 
         public void Habits()
         {
-            ScenesManager.Instance.LoadLoadingScene("TaskMenuHabits");
+            ScenesManager.Instance.LoadSceneWithoutLoading("TaskMenuHabits");
         }
 
         public void DungeonsScreen()
         {
-            ScenesManager.Instance.LoadLoadingScene("DungeonsScreen");
+            ScenesManager.Instance.LoadSceneWithoutLoading("DungeonsScreen");
         }
 
         public void MainMenu()
         {
-            ScenesManager.Instance.LoadLoadingScene("MainMenu");
+            ScenesManager.Instance.LoadSceneWithoutLoading("MainMenu");
         }
 
         public void Stats()
         {
-            ScenesManager.Instance.LoadLoadingScene("StatsScreen");
+            ScenesManager.Instance.LoadSceneWithoutLoading("StatsScreen");
         }
 
         public void CreateToDos()
         {
-            ScenesManager.Instance.LoadLoadingScene("CreateToDos");
+            ScenesManager.Instance.LoadSceneWithoutLoading("CreateToDos");
         }
 
         public void CreateDailys()
         {
-            ScenesManager.Instance.LoadLoadingScene("CreateFrequents");
+            ScenesManager.Instance.LoadSceneWithoutLoading("CreateFrequents");
         }
 
         public void CreateHabits()
         {
-            ScenesManager.Instance.LoadLoadingScene("CreateHabit");
+            ScenesManager.Instance.LoadSceneWithoutLoading("CreateHabit");
         }
 
         public void LoadGame()

@@ -61,7 +61,7 @@ namespace DungeonKIT
             mobileUIGO.SetActive(true); //Enable mobile UI
 #endif
             dialogManager = GetComponent<DialogManager>();
-
+            PlayerStats.GetInstance().DoorKeys.Clear();
 
             playerStats = PlayerStats.Instance; //Set playerstats in static object of PlayerStats
             healthAmount= playerStats.HP.max;
@@ -146,7 +146,7 @@ namespace DungeonKIT
         //Load main menu method
         public void LoadMainMenu()
         {
-            ScenesManager.Instance.LoadLoadingScene("DungeonsScreen"); //Load main menu scene
+            ScenesManager.Instance.LoadSceneWithoutLoading("DungeonsScreen"); //Load main menu scene
         }
 
 

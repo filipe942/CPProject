@@ -38,6 +38,11 @@ namespace DungeonKIT
             SceneManager.LoadScene("LoadingScene"); //load LoadingScene
         }
 
+        public void LoadSceneWithoutLoading(string sceneToLoad)
+        {
+            SceneManager.LoadScene(sceneToLoad);
+        }
+
         //Method to add a scene to the background
         public void LoadAdditiveScene(string sceneName)
         {

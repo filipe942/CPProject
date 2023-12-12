@@ -57,8 +57,6 @@ public class DynamicList : MonoBehaviour
         {
             if (DateTime.TryParseExact(todo.endDate.Replace("\u200B", "").Trim(), "yyyy-MM-dd", null, DateTimeStyles.None, out DateTime parsedDate))
             {
-                // Compare against the next day to exclude the current day
-                print(parsedDate + " " + currentDate);
                 return parsedDate < currentDate;
             }
             else

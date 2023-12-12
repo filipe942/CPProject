@@ -71,4 +71,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/DungeonKit/Scenes/DungeonsScreen.unity
     guid: ce9fe6af33745c8408f5e1e7d856d2b2
+  - enabled: 1
+    path: Assets/DungeonKit/Scenes/LoadingSceneWithoutUI.unity
+    guid: 9a4fd3113b098474dabe4ef2d40b4ba3
   m_configObjects: {}

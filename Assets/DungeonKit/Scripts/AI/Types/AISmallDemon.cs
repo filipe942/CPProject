@@ -10,7 +10,6 @@ namespace DungeonKIT
 
         private float timeBtwAttacks; // Time between orc attacks
         public float startTimeBtnAttacks = 1.0f; // Initial time between orc attacks
-        AIController aiController;
 
         private void Start()
         {
@@ -18,6 +17,7 @@ namespace DungeonKIT
             aiStats.enemyHP = new DoubleFloat(20f, 20f); // HP do orc é definido aqui
             aiStats.attackDamage = 5f + (1.5f * PlayerStats.GetInstance().DungeonLevel);
             timeBtwAttacks = startTimeBtnAttacks; // Initialize the time between attacks
+            AIController aiController = GetComponent<AIController>();
             aiController.moveSpeed = 1.5f;
         }
 
