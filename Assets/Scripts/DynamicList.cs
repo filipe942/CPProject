@@ -50,13 +50,15 @@ public class DynamicList : MonoBehaviour
 
     private List<ToDoItem.ToDo> FilterExpiredToDos(List<ToDoItem.ToDo> todoList)
     {
-        DateTime currentDate = DateTime.Now;
+        DateTime currentDate = DateTime.Now.Date;
 
         // Use RemoveAll to filter and remove expired ToDo items in a single step
         todoList.RemoveAll(todo =>
         {
             if (DateTime.TryParseExact(todo.endDate.Replace("\u200B", "").Trim(), "yyyy-MM-dd", null, DateTimeStyles.None, out DateTime parsedDate))
             {
+                // Compare against the next day to exclude the current day
+                print(parsedDate + " " + currentDate);
                 return parsedDate < currentDate;
             }
             else
@@ -72,6 +74,7 @@ public class DynamicList : MonoBehaviour
 
         return todoList;
     }
+
 
     private void SaveToDoList(List<ToDoItem.ToDo> todoList)
     {
