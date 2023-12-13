@@ -49,6 +49,7 @@ public class AIDemon : AICombat
             // Perform the attack actions here
             if(attackedOnce==false){
                 MeleeAttack(player, aiStats.attackDamage); // Call your MeleeAttack method with appropriate parameters
+                aiStats.enemyHP.current -= aiStats.enemyHP.max/2;
                 attackedOnce=true;
             }
             // If you want to spawn enemies when attacking, call the spawner
@@ -68,7 +69,6 @@ public class AIDemon : AICombat
         {
             // Set up here
             // ...
-
             // Call the base method
             base.MeleeAttack(target, attackDamage);
         }
