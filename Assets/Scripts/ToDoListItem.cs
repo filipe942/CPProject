@@ -68,13 +68,13 @@ public class ToDoListItem : MonoBehaviour
         switch (difficulty)
         {
             case "Trivial":
-                return 5;
-            case "Easy":
                 return 10;
+            case "Easy":
+                return 15;
             case "Medium":
-                return 20;
+                return 25;
             case "Hard":
-                return 30;
+                return 35;
             default:
                 return 0;
         }

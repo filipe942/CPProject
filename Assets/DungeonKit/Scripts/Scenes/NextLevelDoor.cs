@@ -77,7 +77,7 @@ namespace DungeonKIT
             {
                 int bossLevel = UnityEngine.Random.Range(1, 3); // Randomly select 1 or 2 for the boss level
                 PlayerStats.GetInstance().DungeonLevel = nextLevel;
-                PlayerStats.GetInstance().GainXP(10);
+                PlayerStats.GetInstance().GainXP(5);
                 SaveManager.Save();
                 SaveManager.SaveDungeonFloor("Lvl_Boss_" + bossLevel);
                 ScenesManager.Instance.LoadLoadingScene("Lvl_Boss_" + bossLevel); // Load boss level
@@ -87,7 +87,7 @@ namespace DungeonKIT
             {
                 randomLevelID = UnityEngine.Random.Range(0, 4);
                 PlayerStats.GetInstance().DungeonLevel = nextLevel;
-                PlayerStats.GetInstance().GainXP(10);
+                PlayerStats.GetInstance().GainXP(5);
                 SaveManager.Save();
                 SaveManager.SaveDungeonFloor("Lvl_" + randomLevelID);
                 ScenesManager.Instance.LoadLoadingScene("Lvl_" + randomLevelID); // Load next level

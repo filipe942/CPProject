@@ -145,16 +145,16 @@ public class HabitListItem : MonoBehaviour
         switch (difficulty)
         {
             case "Trivial":
-                basePoints = 5;
-                break;
-            case "Easy":
                 basePoints = 10;
                 break;
+            case "Easy":
+                basePoints = 15;
+                break;
             case "Medium":
-                basePoints = 20;
+                basePoints = 25;
                 break;
             case "Hard":
-                basePoints = 30;
+                basePoints = 35;
                 break;
                 // Handle other cases for 'difficulty'
         }
