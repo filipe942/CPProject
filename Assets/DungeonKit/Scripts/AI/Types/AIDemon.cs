@@ -9,15 +9,19 @@ public class AIDemon : AICombat
     AIDemonSpawner spawner; // Reference to the spawner
 
     private float timeBtwAttacks; // Time between orc attacks
-    public float startTimeBtnAttacks = 1.0f; // Initial time between orc attacks
-    
+    public float startTimeBtnAttacks = 10.0f; // Initial time between orc attacks
+
+    public bool attackedOnce;
 
     private void Start()
     {
         aiStats = GetComponent<AIStats>();
-        aiStats.enemyHP = new DoubleFloat(100f, 100f); // HP do orc é definido aqui
-        aiStats.attackDamage = 5f + (1.5f * PlayerStats.GetInstance().DungeonLevel);
+        aiStats.enemyHP = new DoubleFloat(200f, 200f); // HP do orc é definido aqui
+        aiStats.attackDamage = PlayerStats.GetInstance().HP.max + (2f * PlayerStats.GetInstance().DungeonLevel);
         timeBtwAttacks = startTimeBtnAttacks; // Initialize the time between attacks
+        aiStats.attackSpeed= -0.50f;
+        attackedOnce=false;
+        
 
         // Find the spawner in the scene
         spawner = FindObjectOfType<AIDemonSpawner>();
@@ -43,7 +47,10 @@ public class AIDemon : AICombat
         if (timeBtwAttacks <= 0)
         {
             // Perform the attack actions here
-            
+            if(attackedOnce==false){
+                MeleeAttack(player, aiStats.attackDamage); // Call your MeleeAttack method with appropriate parameters
+                attackedOnce=true;
+            }
             // If you want to spawn enemies when attacking, call the spawner
             if (spawner != null)
             {
@@ -57,4 +64,12 @@ public class AIDemon : AICombat
             timeBtwAttacks -= Time.deltaTime;
         }
     }
+    public override void MeleeAttack(GameObject target, float attackDamage) 
+        {
+            // Set up here
+            // ...
+
+            // Call the base method
+            base.MeleeAttack(target, attackDamage);
+        }
 }

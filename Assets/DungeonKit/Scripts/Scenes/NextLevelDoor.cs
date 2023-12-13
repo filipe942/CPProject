@@ -70,13 +70,13 @@ namespace DungeonKIT
         //Next level method para testes, o debaixo e o final
         void GoToNextLevel()
         {
-            
+            int nextLevel=PlayerStats.GetInstance().DungeonLevel+1;
             int randomLevelID;
             // Check if the level is a multiple of 10
-            if (PlayerStats.GetInstance().DungeonLevel % 10 == 0 && PlayerStats.GetInstance().DungeonLevel != 0)
+            if (nextLevel % 10 == 0 && PlayerStats.GetInstance().DungeonLevel != 0)
             {
                 int bossLevel = UnityEngine.Random.Range(1, 3); // Randomly select 1 or 2 for the boss level
-                PlayerStats.GetInstance().DungeonLevel++;
+                PlayerStats.GetInstance().DungeonLevel = nextLevel;
                 PlayerStats.GetInstance().GainXP(10);
                 SaveManager.Save();
                 SaveManager.SaveDungeonFloor("Lvl_Boss_" + bossLevel);
@@ -86,7 +86,7 @@ namespace DungeonKIT
             else
             {
                 randomLevelID = UnityEngine.Random.Range(0, 4);
-                PlayerStats.GetInstance().DungeonLevel++;
+                PlayerStats.GetInstance().DungeonLevel = nextLevel;
                 PlayerStats.GetInstance().GainXP(10);
                 SaveManager.Save();
                 SaveManager.SaveDungeonFloor("Lvl_" + randomLevelID);
