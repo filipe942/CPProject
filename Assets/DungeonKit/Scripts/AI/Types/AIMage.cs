@@ -19,7 +19,7 @@ namespace DungeonKIT
         private void Start()
         {
             aiStats = GetComponent<AIStats>();
-            aiStats.enemyHP= new DoubleFloat(50f, 50f); //HP do mago é definido aqui
+            aiStats.enemyHP= new DoubleFloat(50f + 1.5f * PlayerStats.GetInstance().DungeonLevel, 50f + 1.5f * PlayerStats.GetInstance().DungeonLevel); //HP do mago é definido aqui
             player = GameObject.FindGameObjectWithTag("Player");
             aiController = GetComponent<AIController>();
             aiStats.attackSpeed= 0.10f + (0.01f*PlayerStats.GetInstance().DungeonLevel);
