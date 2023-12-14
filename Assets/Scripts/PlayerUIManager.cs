@@ -49,20 +49,19 @@ namespace DungeonKIT
             
             if(strText)
             {
-                float damagePercentage = Mathf.RoundToInt(Mathf.InverseLerp(1, 100, playerStatsReference.Damage) * 100f);
-                strText.text = Mathf.Clamp(damagePercentage, 1, 100).ToString();
+                strText.text = (playerStatsReference.Damage -1 ).ToString();
             }
 
             if (aglText)
             {
                 float agilityPercentage = Mathf.RoundToInt(Mathf.InverseLerp(0.8f, 1.5f, playerStatsReference.Agility) * 100f);
-                aglText.text = Mathf.Clamp(agilityPercentage, 1, 100).ToString();
+                aglText.text = Mathf.Clamp(agilityPercentage, 0, 100).ToString();
             }
 
             if (defText)
             {
                 float armorPercentage = Mathf.RoundToInt(Mathf.InverseLerp(0.4f, 0.85f, playerStatsReference.Armor) * 100f);
-                defText.text = Mathf.Clamp(armorPercentage, 1, 100).ToString();
+                defText.text = Mathf.Clamp(armorPercentage, 0, 100).ToString();
             }
 
             if (pointsText) 
@@ -89,15 +88,12 @@ namespace DungeonKIT
 
         public void AddStr()
         {
-            if (playerStatsReference.Points != 0 && playerStatsReference.Damage <100)
+            if (playerStatsReference.Points != 0)
             { 
-                if(playerStatsReference.Damage < 100)
-                {
                     playerStatsReference.Damage += 1;
-                    //playerStatsReference.Points -= 1;
+                    playerStatsReference.Points -= 1;
                     SaveManager.Save();
                     UpdateUI();
-                } 
             }  
         }
 
@@ -108,6 +104,10 @@ namespace DungeonKIT
                 if (playerStatsReference.Agility < 1.5)
                 {
                     playerStatsReference.Agility += 0.007f;
+                    if (playerStatsReference.Agility > 1.49)
+                    {
+                        playerStatsReference.Agility = 1.5f;
+                    }
                     playerStatsReference.Points -= 1;
                     SaveManager.Save();
                     UpdateUI();
@@ -124,11 +124,15 @@ namespace DungeonKIT
 
         public void AddDef()
         {
-            if (playerStatsReference.Points != 0 && playerStatsReference.Armor < 1)
+            if (playerStatsReference.Points != 0 && playerStatsReference.Armor < 0.85)
             {
                 if (playerStatsReference.Armor < 0.85)
                 {
                     playerStatsReference.Armor += 0.0045f;
+                    if (playerStatsReference.Agility > 0.84)
+                    {
+                        playerStatsReference.Armor = 0.85f;
+                    }
                     playerStatsReference.Points -= 1;
                     SaveManager.Save();
                     UpdateUI();
@@ -180,9 +184,7 @@ namespace DungeonKIT
 
         public void RemoveDef()
         {
-            if (playerStatsReference.Armor > 0.4)
-            {
-                if (playerStatsReference.Armor > 0.4)
+                if (playerStatsReference.Armor >= 0.4045)
                 {
                     playerStatsReference.Armor -= 0.0045f;
                     playerStatsReference.Points += 1;
@@ -196,7 +198,6 @@ namespace DungeonKIT
                 //    SaveManager.Save();
                 //    UpdateUI();
                 //}
-            }
         }
     }
 }

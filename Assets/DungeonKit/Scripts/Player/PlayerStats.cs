@@ -189,7 +189,7 @@ namespace DungeonKIT
         private void LevelUp()
         {
             Level++;
-            Points++;
+            Points = Points + 3;
             HP.max += 20;
             HP.current = HP.max;
             

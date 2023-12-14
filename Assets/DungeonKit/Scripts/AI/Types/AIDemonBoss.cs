@@ -20,7 +20,7 @@ namespace DungeonKIT
         private void Start()
         {
             aiStats = GetComponent<AIStats>();
-            aiStats.enemyHP= new DoubleFloat(1200f + 2f * PlayerStats.GetInstance().DungeonLevel, 1200f + 2f * PlayerStats.GetInstance().DungeonLevel); //HP do mago é definido aqui
+            aiStats.enemyHP= new DoubleFloat(1200f + 20f * PlayerStats.GetInstance().DungeonLevel, 1200f + 20f * PlayerStats.GetInstance().DungeonLevel); //HP do mago é definido aqui
             player = GameObject.FindGameObjectWithTag("Player");
             aiController = GetComponent<AIController>();
         }

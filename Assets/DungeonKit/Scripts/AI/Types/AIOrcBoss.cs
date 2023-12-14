@@ -20,7 +20,7 @@ namespace DungeonKIT
             animator = GetComponentInChildren<Animator>();
             aiController = GetComponent<AIController>();
             aiStats = GetComponent<AIStats>(); 
-            aiStats.enemyHP= new DoubleFloat(1500f + 1.5f * PlayerStats.GetInstance().DungeonLevel, 1500f + 1.5f * PlayerStats.GetInstance().DungeonLevel); //HP do orc boss é definido aqui
+            aiStats.enemyHP= new DoubleFloat(1500f + 15f * PlayerStats.GetInstance().DungeonLevel, 1500f + 15f * PlayerStats.GetInstance().DungeonLevel); //HP do orc boss é definido aqui
             aiStats.attackDamage = 20f + (1.5f * PlayerStats.GetInstance().DungeonLevel);
             aiStats.attackSpeed= 0.10f + (0.01f*PlayerStats.GetInstance().DungeonLevel);
             //aiStats.onDeath += Death; //Adds to the event variable in the parent class
