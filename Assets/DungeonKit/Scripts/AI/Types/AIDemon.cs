@@ -16,7 +16,7 @@ public class AIDemon : AICombat
     private void Start()
     {
         aiStats = GetComponent<AIStats>();
-        aiStats.enemyHP = new DoubleFloat(200f, 200f); // HP do orc é definido aqui
+        aiStats.enemyHP = new DoubleFloat(200f + 1.5f * PlayerStats.GetInstance().DungeonLevel, 200f + 1.5f * PlayerStats.GetInstance().DungeonLevel); // HP do orc é definido aqui
         aiStats.attackDamage = PlayerStats.GetInstance().HP.max + (2f * PlayerStats.GetInstance().DungeonLevel);
         timeBtwAttacks = startTimeBtnAttacks; // Initialize the time between attacks
         aiStats.attackSpeed= -0.50f;
